@@ -1,0 +1,18 @@
+.app-container {
+    background-image: url('/assets/img/city-background-blurred.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    /*
+    display: flex;
+    flex-direction: column;
+    */
+    height: 100vh;
+}
+
+#app-title {
+    color: white;
+    padding-left: 2vw;
+    padding-top: 2vh;
+}
