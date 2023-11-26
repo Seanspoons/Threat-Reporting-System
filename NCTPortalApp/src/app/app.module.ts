@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { ReportComponent } from './report/report.component';
+import { ReportComponent } from './models/report/report.component';
 import { ReportListComponent } from './report-list/report-list.component';
-import { RectangleContainerComponent } from './rectangle-container/rectangle-container.component';
-import { TableComponent } from './table/table.component';
+import { RectangleContainerComponent } from './components/rectangle-container/rectangle-container.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   declarations: [
