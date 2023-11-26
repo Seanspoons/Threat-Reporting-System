@@ -1,0 +1,12 @@
+.rectangle-container {
+    border-radius: 20px;
+    width: 75vw;
+    height: 75vh;
+    background-color: rgba(88,81,80,0.75);
+}
+
+.rectangle-container-title {
+    color: white;
+    padding-left: 1vw;
+    padding-top: 1vh;
+}
