@@ -20,4 +20,9 @@ export class ReportListComponent {
     let report3 = new NuisanceReport(new Person("Darren", "604-125-5432"), "New Westminster");
     this.reports = [report1, report2, report3];
   }
+
+  onReportDelete(event:{reportID:string}) {
+    let deleteReportID = event.reportID;
+    this.reports = this.reports.filter((r:{id:string})=> r.id != deleteReportID)
+  }
 }
