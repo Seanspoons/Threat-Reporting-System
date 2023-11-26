@@ -1,0 +1,13 @@
+<p>
+    <u>REPORT</u> <br>
+    Name: <span [textContent]="report.reporter.name"></span> <br>
+    Reported On: {{ report.date }} <br>
+    <span id="butt" class="d-grid gap-2 col-12">
+        <button id="show" class="btn btn-outline-primary">SHOW MORE</button>
+        <button 
+            id="delete"
+            class="btn btn-outline-danger"
+            (click)="onDelete($event,report.id)"
+        >DELETE</button>
+    </span>
+</p>

@@ -1,0 +1,12 @@
+p {
+    width: 40vw;
+    padding: 1em;
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid black;
+    text-align: center;
+}
+
+button {
+    margin-top: 0.5em;
+}
