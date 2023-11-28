@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NuisanceReport } from 'src/app/models/nuisance-report';
 import { ReportServiceService } from 'src/app/services/report-service.service';
 

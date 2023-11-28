@@ -1,1 +1,14 @@
+<table>
+    <thead>
 
+    </thead>
+    <tbody>
+        <tr
+            *ngFor="let r of reports"
+        >
+            <td>{{ r.baddieName }}</td>
+            <td>{{ r.location }}</td>
+            <td>{{ r.status }}</td>
+        </tr>
+    </tbody>
+</table>
