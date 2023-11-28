@@ -9,8 +9,9 @@ import { TableComponent } from './components/table/table.component';
 import { ColorsDirective } from './directives/colors.directive';
 import { CountReportsPipe } from './pipes/count-reports.pipe';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchPipe } from './pipes/search.pipe';
+import { ReportAddFormComponent } from './components/report-add-form/report-add-form.component';
 
 @NgModule({
   declarations: [
@@ -21,11 +22,13 @@ import { SearchPipe } from './pipes/search.pipe';
     TableComponent,
     ColorsDirective,
     CountReportsPipe,
-    SearchPipe
+    SearchPipe,
+    ReportAddFormComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
