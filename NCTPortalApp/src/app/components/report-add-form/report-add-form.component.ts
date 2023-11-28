@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators, ValidatorFn } from '@angular/forms';
 import { NuisanceReport } from 'src/app/models/nuisance-report';
+import { ReportServiceService } from 'src/app/services/report-service.service';
 
 @Component({
   selector: 'app-report-add-form',
@@ -11,9 +12,10 @@ export class ReportAddFormComponent {
 
   form: FormGroup;
 
-  constructor() { 
+  constructor(private reportService: ReportServiceService) { 
     let formControls = {
       reporter: new FormControl('', [Validators.required, Validators.minLength(4), this.forbiddenReporterValidator as ValidatorFn]),
+      location: new FormControl('', Validators.required),
       status: new FormControl()
     }
     this.form = new FormGroup(formControls)
@@ -29,7 +31,8 @@ export class ReportAddFormComponent {
   }
 
   onSubmit(newReport: NuisanceReport) {
-    console.log(newReport);
+    //console.log(newReport);
+    this.reportService.add(newReport);
   }
 
 }
