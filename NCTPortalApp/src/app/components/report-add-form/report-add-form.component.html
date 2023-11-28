@@ -1,41 +1,57 @@
-<form 
-    [formGroup]="form"
-    (ngSubmit)="onSubmit(form.value)"
->
-    <fieldset class="d-grid gap-2 col-12">
-        <legend>Add Report</legend>
-        <input 
-            type="text"
-            name="reporter"
-            placeholder="REPORTER"
-            formControlName="reporter"
-        >
-        <input 
-            type="text"
-            name="location"
-            placeholder="LOCATION"
-            formControlName="location"
-        >
-        
-        <div class="form-check">
-            <input
-                type="checkbox"
-                name="status_checkbox"
-                id="status_checkbox"
-                formControlName="status"
-                class="form-check-input"
-            >
-            <label class="form-check-label" for="status_checkbox">
-                Status
-            </label>
-        </div>
+<div class="report-form-container">
+    <h2 class="report-form-title">Report Baddie</h2>
+    <div class="content-container">
 
-        <button 
-            class="btn btn-outline-primary"
-            [disabled]="!form.valid"
+        <form 
+            [formGroup]="form"
+            (ngSubmit)="onSubmit()"
         >
-        Save
-        </button>
-    </fieldset> 
+            <table class="form-table">
+                <tr> 
+                    <th>Reporter's Name</th>
+                    <td>
+                        <input 
+                            type="text"
+                            name="reporter"
+                            placeholder="reporter's name"
+                            formControlName="reporter"
+                        >
+                    </td>
+                </tr>
 
-</form>
+                <tr> 
+                    <th>Reporter's Phone Number</th>
+                    <td>
+                        <input 
+                            type="text"
+                            name="phoneNumber"
+                            placeholder="phone number"
+                            formControlName="phoneNumber"
+                        >
+                    </td>
+                </tr>
+
+                <tr> 
+                    <th>Baddie Location</th>
+                    <td>
+                        <input 
+                            type="text"
+                            name="location"
+                            placeholder="location"
+                            formControlName="location"
+                        >
+                    </td>
+                </tr>
+
+            </table>
+
+            <button 
+                class="btn btn-outline-primary"
+                [disabled]="!form.valid"
+                >
+                Submit Form
+                </button>
+        </form>
+
+    </div>
+</div>

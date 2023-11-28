@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NuisanceReport } from 'src/app/models/nuisance-report';
+import { ReportServiceService } from 'src/app/services/report-service.service';
 
 @Component({
   selector: 'app-table',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableComponent implements OnInit {
 
-  constructor() { }
+  reports: NuisanceReport[];
+  query: string;
 
-  ngOnInit(): void {
+  constructor(private reportService: ReportServiceService) {
+    this.query='';
+    this.reports = [];
+  }
+
+  ngOnInit(): void { // Will be getting from the database
+    this.reports = this.reportService.get();
+  }
+
+  onReportDelete(event:{reportID:string}) {
+    let deleteReportID = event.reportID;
+    this.reports = this.reportService.delete(deleteReportID);
   }
 
 }
