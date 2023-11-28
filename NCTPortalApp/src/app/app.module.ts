@@ -12,6 +12,8 @@ import { CountReportsPipe } from './pipes/count-reports.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchPipe } from './pipes/search.pipe';
 import { ReportAddFormComponent } from './components/report-add-form/report-add-form.component';
+import { MapComponent } from './components/map/map.component';
+import { MoreInfoComponent } from './components/more-info/more-info.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ReportAddFormComponent } from './components/report-add-form/report-add-
     ColorsDirective,
     CountReportsPipe,
     SearchPipe,
-    ReportAddFormComponent
+    ReportAddFormComponent,
+    MapComponent,
+    MoreInfoComponent
   ],
   imports: [
     BrowserModule,
