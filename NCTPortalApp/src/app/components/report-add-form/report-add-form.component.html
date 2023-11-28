@@ -7,7 +7,7 @@
             (ngSubmit)="onSubmit()"
         >
             <table class="form-table">
-                <tr> 
+                <tr class="regular-row"> 
                     <th>Reporter's Name</th>
                     <td>
                         <input 
@@ -19,7 +19,7 @@
                     </td>
                 </tr>
 
-                <tr> 
+                <tr class="regular-row"> 
                     <th>Reporter's Phone Number</th>
                     <td>
                         <input 
@@ -31,7 +31,7 @@
                     </td>
                 </tr>
 
-                <tr> 
+                <tr class="regular-row"> 
                     <th>Baddie Location</th>
                     <td>
                         <input 
@@ -43,15 +43,20 @@
                     </td>
                 </tr>
 
+                <tr class="large-row" id="description"> 
+                    <th>Description and Notes</th>
+                    <td>
+                        <textarea name="description" placeholder="description and notes" formControlName="description"></textarea>
+                    </td>
+                </tr>
+
             </table>
-
-            <button 
-                class="btn btn-outline-primary"
-                [disabled]="!form.valid"
-                >
-                Submit Form
-                </button>
         </form>
-
     </div>
+    <button 
+        class="submit-button"
+        [disabled]="!form.valid"
+        >
+        Submit Form
+    </button>
 </div>
