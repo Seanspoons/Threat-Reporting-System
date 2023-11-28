@@ -6,6 +6,7 @@ import { ReportComponent } from './components/report/report.component';
 import { ReportListComponent } from './components/report-list/report-list.component';
 import { RectangleContainerComponent } from './components/rectangle-container/rectangle-container.component';
 import { TableComponent } from './components/table/table.component';
+import { ColorsDirective } from './colors.directive';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { TableComponent } from './components/table/table.component';
     ReportComponent,
     ReportListComponent,
     RectangleContainerComponent,
-    TableComponent
+    TableComponent,
+    ColorsDirective
   ],
   imports: [
     BrowserModule
