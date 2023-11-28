@@ -14,6 +14,7 @@ import { SearchPipe } from './pipes/search.pipe';
 import { ReportAddFormComponent } from './components/report-add-form/report-add-form.component';
 import { MapComponent } from './components/map/map.component';
 import { MoreInfoComponent } from './components/more-info/more-info.component';
+import { RoutingModule } from './routing.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MoreInfoComponent } from './components/more-info/more-info.component';
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
