@@ -1,19 +1,22 @@
-import { Time } from "@angular/common";
 import { Person } from './person';
 
 export class NuisanceReport {
     id: string;
     reporter: Person;
+    baddieName: string;
     location: string;
     date: Date;
+    description: string;
     status: boolean; // true means open; false means closed
 
 
-    constructor(reporter: Person, location: string) {
+    constructor(reporter: Person, baddieName: string, location: string, description: string) {
         this.id = idGenerator();
         this.reporter = reporter;
+        this.baddieName = baddieName
         this.location = location;
         this.date = new Date();
+        this.description = description;
         this.status = true;
     }
 }

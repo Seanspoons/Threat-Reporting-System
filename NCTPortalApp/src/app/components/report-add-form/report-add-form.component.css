@@ -89,3 +89,7 @@ tr:nth-child(even) {
 .submit-button:active {
     background-color: #2945aa;
 }
+
+.submit-button:disabled {
+    background-color: #a5a5a5;
+}

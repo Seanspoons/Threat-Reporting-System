@@ -9,9 +9,9 @@ export class ReportServiceService {
   reports: NuisanceReport[];
 
   constructor() {
-    let report1 = new NuisanceReport(new Person("John", "604-817-8817"), "Port Coquitlam");
-    let report2 = new NuisanceReport(new Person("Alexandra", "778-457-4545"), "Coquitlam");
-    let report3 = new NuisanceReport(new Person("Darren", "604-125-5432"), "New Westminster");
+    let report1 = new NuisanceReport(new Person("John", "604-817-8817"), "Bad Wolf", "Port Coquitlam", "bad guy");
+    let report2 = new NuisanceReport(new Person("Alexandra", "778-457-4545"), "Bad Wolf", "Coquitlam", "bad guy");
+    let report3 = new NuisanceReport(new Person("Darren", "604-125-5432"), "Bad Wolf", "New Westminster", "bad guy");
     this.reports = [report1, report2, report3];
   }
 

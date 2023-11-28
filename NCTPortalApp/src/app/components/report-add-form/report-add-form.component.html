@@ -4,7 +4,6 @@
 
         <form 
             [formGroup]="form"
-            (ngSubmit)="onSubmit()"
         >
             <table class="form-table">
                 <tr class="regular-row"> 
@@ -32,12 +31,24 @@
                 </tr>
 
                 <tr class="regular-row"> 
-                    <th>Baddie Location</th>
+                    <th>Baddie's Name</th>
+                    <td>
+                        <input 
+                            type="text"
+                            name="baddieName"
+                            placeholder="baddie's name"
+                            formControlName="baddieName"
+                        >
+                    </td>
+                </tr>
+
+                <tr class="regular-row"> 
+                    <th>Baddie's Location</th>
                     <td>
                         <input 
                             type="text"
                             name="location"
-                            placeholder="location"
+                            placeholder="baddie's location"
                             formControlName="location"
                         >
                     </td>
@@ -55,6 +66,7 @@
     </div>
     <button 
         class="submit-button"
+        (click)="onSubmit()"
         [disabled]="!form.valid"
         >
         Submit Form
