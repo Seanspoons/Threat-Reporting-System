@@ -1,3 +1,6 @@
+<p>
+    Number of reports: {{ reports | countReports }}
+</p>
 <app-report 
     *ngFor="let r of reports"
     [report]="r"

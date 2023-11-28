@@ -1,9 +1,10 @@
 <p
+    appColors
     [ngClass]="{ 'open-style':report.status }"
 >
     <u>REPORT</u> <br>
     Name: <span [textContent]="report.reporter.name"></span> <br>
-    Reported On: {{ report.date }} <br>
+    Reported On: {{ report.date | date: 'MMM dd, yyyy' }} <br>
     Status: <span *ngIf="report.status; then open else closed"></span> <br>
     <ng-template #open>&check;</ng-template>
     <ng-template #closed>&#1005;</ng-template>

@@ -6,7 +6,8 @@ import { ReportComponent } from './components/report/report.component';
 import { ReportListComponent } from './components/report-list/report-list.component';
 import { RectangleContainerComponent } from './components/rectangle-container/rectangle-container.component';
 import { TableComponent } from './components/table/table.component';
-import { ColorsDirective } from './colors.directive';
+import { ColorsDirective } from './directives/colors.directive';
+import { CountReportsPipe } from './pipes/count-reports.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ColorsDirective } from './colors.directive';
     ReportListComponent,
     RectangleContainerComponent,
     TableComponent,
-    ColorsDirective
+    ColorsDirective,
+    CountReportsPipe
   ],
   imports: [
     BrowserModule

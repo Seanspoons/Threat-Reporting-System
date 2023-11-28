@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NuisanceReport } from 'src/app/models/nuisance-report';
 
 @Component({
   selector: 'app-report',
