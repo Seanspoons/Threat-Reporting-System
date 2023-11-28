@@ -9,6 +9,9 @@ import { TableComponent } from './components/table/table.component';
 import { ColorsDirective } from './directives/colors.directive';
 import { CountReportsPipe } from './pipes/count-reports.pipe';
 
+import { FormsModule } from '@angular/forms';
+import { SearchPipe } from './pipes/search.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,10 +20,12 @@ import { CountReportsPipe } from './pipes/count-reports.pipe';
     RectangleContainerComponent,
     TableComponent,
     ColorsDirective,
-    CountReportsPipe
+    CountReportsPipe,
+    SearchPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

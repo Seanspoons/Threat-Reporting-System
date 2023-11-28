@@ -1,8 +1,11 @@
+<span>SEARCH: <input type="text" [(ngModel)]="query"></span>
+<br>
+<br>
 <p>
-    Number of reports: {{ reports | countReports }}
+    Number of reports: {{ reports | search:query | countReports }}
 </p>
 <app-report 
-    *ngFor="let r of reports"
+    *ngFor="let r of reports | search:query"
     [report]="r"
     (delete)="onReportDelete($event)"
 ></app-report>
