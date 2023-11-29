@@ -1,8 +1,6 @@
 <div class="app-container">
     <h1 id="app-title">{{ title }}</h1>
-    <div class="content-container">
-        <app-map *ngIf="showMap"></app-map>
-        <app-more-info *ngIf="showMoreInfo"></app-more-info>
+    <div id="contentContainer" class="content-container">
         <router-outlet></router-outlet>
     </div>
 </div>

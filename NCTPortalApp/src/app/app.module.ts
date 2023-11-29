@@ -14,6 +14,9 @@ import { MapComponent } from './components/map/map.component';
 import { MoreInfoComponent } from './components/more-info/more-info.component';
 import { RoutingModule } from './routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ThreeComponentsComponent } from './components/three-components/three-components.component';
+import { TwoComponentsComponent } from './components/two-components/two-components.component';
+import { TwoComponentsMoreInfoComponent } from './components/two-components-more-info/two-components-more-info.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { HttpClientModule } from '@angular/common/http';
     SearchPipe,
     ReportAddFormComponent,
     MapComponent,
-    MoreInfoComponent
+    MoreInfoComponent,
+    ThreeComponentsComponent,
+    TwoComponentsComponent,
+    TwoComponentsMoreInfoComponent
   ],
   imports: [
     BrowserModule,

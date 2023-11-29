@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 
 @Component({
@@ -8,17 +8,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'The Night Crusade Titans Portal';
-  showMap = false;
-  showMoreInfo = false;
-  buttonText = 'View Report Map';
-
-  toggleMap(): string {
-    this.showMap = !this.showMap;
-    this.buttonText = this.showMap ? 'Close Report Map' : 'View Report Map';
-    return this.buttonText;
-  }
-
-  toggleMoreInfo(): void {
-    this.showMoreInfo = !this.showMoreInfo;
-  }
 }
