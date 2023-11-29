@@ -15,16 +15,21 @@ export class TableComponent implements OnInit {
   constructor(private reportService: ReportServiceService) {
     this.query='';
     this.reports = [];
+    this.reportService.get();
   }
 
   ngOnInit(): void {
-    this.reportService.get();
     this.reports = this.reportService.reports;
   }
 
-  onReportDelete(event:{reportID:string}) {
-    let deleteReportID = event.reportID;
-    this.reportService.delete(deleteReportID);
+  onReportDelete(reportID: string) {
+    // Need to authenticate first
+    // For now just allow delete from button click
+    this.reportService.delete(reportID);
+  }
+
+  onMoreInfo(reportID: string) {
+    console.log("moreInfo called for id: " + reportID);
   }
 
 }

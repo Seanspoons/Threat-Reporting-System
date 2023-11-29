@@ -10,20 +10,27 @@ import { Observable, map } from 'rxjs';
 export class ReportServiceService{
 
   reports: NuisanceReport[];
+  firstLoad: boolean;
 
   constructor(private http: HttpClient) {
     this.reports = [];
+    this.firstLoad = true;
   }
 
   get() { // I think it is going through this everytime there is an addition too. Which ends up creating too many elements in the table. Possibly look at how I might be pushing onto array in the add already
-    this.http.get('https://272.selfip.net/apps/22m6j5mz3y/collections/reports/documents/')
+    if(this.firstLoad) {
+      this.http.get('https://272.selfip.net/apps/22m6j5mz3y/collections/reports/documents/')
       .subscribe((data)=>{
         var rows = <Array<any>>data;
         for(let i = 0; i < rows.length; i++) {
-          console.log("adding report + index: " + i);
           this.reports.push(new NuisanceReport(new Person(rows[i].data.reporter.name, rows[i].data.reporter.phoneNumber), rows[i].data.baddieName, rows[i].data.location, rows[i].data.description));
+          this.firstLoad = false;
         }
       })
+    } else {
+      
+    }
+    
   }
 
   add(newReport: NuisanceReport) {
