@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Injectable, OnInit } from '@angular/core';
 import { NuisanceReport } from '../models/nuisance-report';
 import { Person } from '../models/person';
 import { HttpClient } from '@angular/common/http';
@@ -45,11 +45,12 @@ export class ReportServiceService{
   }
 
   delete(deleteReportID: string) {
+    console.log("Here is the id for deletion: " + deleteReportID);
     const url = `https://272.selfip.net/apps/22m6j5mz3y/collections/reports/documents//${deleteReportID}`;
     this.http.delete(url).subscribe(
       (data: any) => {
-        console.log(data);
         this.reports = this.reports.filter(r=> r.id !== deleteReportID);
+        // Need to detect changes
       }
     );
   }

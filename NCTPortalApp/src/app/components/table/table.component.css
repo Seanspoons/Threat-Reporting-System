@@ -30,6 +30,16 @@ tr:nth-child(even) {
     background-color: #FFFFFF;
 }
 
+#close-button-span {
+    width: 100%;
+    height: 100%;
+}
+
+#close-button-img {
+    width: 40%;
+    height: 65%;
+}
+
 .table-button {
     background-color: #2945aa;
     border: none;

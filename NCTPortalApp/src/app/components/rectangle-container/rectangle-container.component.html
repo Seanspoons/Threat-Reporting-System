@@ -1,5 +1,8 @@
 <div class="rectangle-container">
     <h2 class="rectangle-container-title">Nuisance Reports</h2>
     <div class="content-container"><app-table></app-table></div>
-    <button class="new-report-button" [routerLink]="['/report-add-form']">Create Nuisance Report</button>
+    <span class="button-holder">
+        <button id="create-report-button" class="rectangle-button" [routerLink]="['/report-add-form']">Create Nuisance Report</button>
+        <button id="view-map-button" class="rectangle-button" [routerLink]="['/map']">View Report Map</button>
+    </span>
 </div>

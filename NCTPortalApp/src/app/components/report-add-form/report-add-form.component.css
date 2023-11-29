@@ -68,28 +68,43 @@ tr:nth-child(even) {
     background-color: #FFFFFF;
 }
 
-.submit-button {
+.add-form-button {
     background-color: #2945aa;
     border: none;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     color: white;
     border-radius: 20px;
-    width: 95%;
     height: 3em;
-    margin-top: 1em;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    margin-bottom: 1em;
 }
 
-.submit-button:hover {
+.add-form-button:hover {
     background-color: #4f6dd1;
 }
 
-.submit-button:active {
+.add-form-button:active {
     background-color: #2945aa;
 }
 
-.submit-button:disabled {
+.add-form-button:disabled {
     background-color: #a5a5a5;
+}
+
+.button-holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 96%;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+#back-button {
+    width: 15%;
+    margin-right: 2em;
+}
+
+#submit-button {
+    width: 80%
 }

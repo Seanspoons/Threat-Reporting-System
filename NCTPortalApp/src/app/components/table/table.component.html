@@ -18,7 +18,7 @@
         <td class="large-cell">{{ r.date | date:'dd/MMM/yyyy h:mm a' }}</td>
         <td>{{ r.status }}</td>
         <td><button class="table-button" (click)="onMoreInfo(r.id)" [routerLink]="['/report-more-info']">More Info</button></td>
-        <td><button class="table-button" (click)="onReportDelete(r.id)">X</button></td>
+        <td><button class="table-button" (click)="onReportDelete(r.id)"><span id="close-button-span"><img id="close-button-img" src="/assets/img/menu-icon.png"></span></button></td>
     </tr>
 </table>
 
