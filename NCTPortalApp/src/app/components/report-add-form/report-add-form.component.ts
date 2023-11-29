@@ -13,7 +13,7 @@ export class ReportAddFormComponent {
 
   form: FormGroup;
 
-  constructor(private reportService: ReportServiceService) { 
+  constructor(private reportService: ReportServiceService) {
     let formControls = {
       reporter: new FormControl('', [Validators.required, Validators.minLength(4)]),
       phoneNumber: new FormControl('', Validators.required),
@@ -26,6 +26,7 @@ export class ReportAddFormComponent {
 
 
   onSubmit() {
+    /*
     if (this.form.valid) {
       let newReporter = new Person(this.form.get('reporter')!.value, this.form.get('phoneNumber')!.value);
       let newReport = new NuisanceReport(newReporter, this.form.get('baddieName')!.value ,this.form.get('location')!.value, this.form.get('description')!.value);
@@ -34,6 +35,8 @@ export class ReportAddFormComponent {
   
       //this.form.reset();
     }
+    */
+    this.reportService.delete("ymKHO_upxtoPlOqZ_k");
   }
 
 }

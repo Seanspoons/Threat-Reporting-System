@@ -17,13 +17,14 @@ export class TableComponent implements OnInit {
     this.reports = [];
   }
 
-  ngOnInit(): void { // Will be getting from the database
-    this.reports = this.reportService.get();
+  ngOnInit(): void {
+    this.reportService.get();
+    this.reports = this.reportService.reports;
   }
 
   onReportDelete(event:{reportID:string}) {
     let deleteReportID = event.reportID;
-    this.reports = this.reportService.delete(deleteReportID);
+    this.reportService.delete(deleteReportID);
   }
 
 }

@@ -13,6 +13,7 @@ import { ReportAddFormComponent } from './components/report-add-form/report-add-
 import { MapComponent } from './components/map/map.component';
 import { MoreInfoComponent } from './components/more-info/more-info.component';
 import { RoutingModule } from './routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { RoutingModule } from './routing.module';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RoutingModule
+    RoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
