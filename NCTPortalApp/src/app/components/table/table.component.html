@@ -1,14 +1,25 @@
 <table>
-    <thead>
+    
+    <tr id="header-row" class="regular-row">
+        <th class="large-cell">Baddie's Name</th>
+        <th class="large-cell">Location</th>
+        <th class="large-cell">Time Reported</th>
+        <th>Status</th>
+        <th class="invisable-cell">More Info</th>
+        <th class="invisable-cell">Close</th>
+    </tr>
 
-    </thead>
-    <tbody>
-        <tr
-            *ngFor="let r of reports"
-        >
-            <td>{{ r.baddieName }}</td>
-            <td>{{ r.location }}</td>
-            <td>{{ r.status }}</td>
-        </tr>
-    </tbody>
+    <tr
+        *ngFor="let r of reports"
+        class="regular-row"
+    >
+        <td class="large-cell">{{ r.baddieName }}</td>
+        <td class="large-cell">{{ r.location }}</td>
+        <td class="large-cell">{{ r.date | date:'dd/MMM/yyyy h:mm a' }}</td>
+        <td>{{ r.status }}</td>
+        <td><button class="table-button">More Info</button></td>
+        <td><button class="table-button">X</button></td>
+    </tr>
 </table>
+
+

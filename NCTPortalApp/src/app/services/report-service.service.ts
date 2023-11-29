@@ -10,7 +10,7 @@ export class ReportServiceService implements OnInit {
   reports: NuisanceReport[];
 
   constructor() {
-    this.reports = [new NuisanceReport(new Person("John", "604-506-0871"), "Bad Wolf", "Metrotown", "Nothing")];
+    this.reports = [new NuisanceReport(new Person("John", "604-506-0871"), "Bad Wolf", "Metrotown", "Nothing")]
   }
 
   ngOnInit(): void {
