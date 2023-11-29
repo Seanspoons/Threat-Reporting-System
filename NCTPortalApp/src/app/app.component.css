@@ -15,8 +15,15 @@
 .content-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     flex-grow: 1;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    overflow-y: auto;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar {
+    width: 0;
 }
 
 #app-title {

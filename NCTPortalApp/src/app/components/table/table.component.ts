@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 import { NuisanceReport } from 'src/app/models/nuisance-report';
 import { ReportServiceService } from 'src/app/services/report-service.service';
 
@@ -12,7 +13,7 @@ export class TableComponent implements OnInit {
   reports: NuisanceReport[];
   query: string;
 
-  constructor(private reportService: ReportServiceService) {
+  constructor(private reportService: ReportServiceService, private appComponent: AppComponent) {
     this.query='';
     this.reports = [];
     this.reportService.get();
@@ -29,7 +30,11 @@ export class TableComponent implements OnInit {
   }
 
   onMoreInfo(reportID: string) {
-    console.log("moreInfo called for id: " + reportID);
+    if(this.appComponent.showMoreInfo) {
+      // Error more info already open
+    } else {
+      this.appComponent.toggleMoreInfo();
+    }
   }
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-rectangle-container',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RectangleContainerComponent implements OnInit {
 
-  constructor() { }
+  buttonText = "View Report Map";
+
+  constructor(private appComponent: AppComponent) { }
 
   ngOnInit(): void {
   }
 
+  toggleMap(): void {
+    this.buttonText = this.appComponent.toggleMap();
+  }
 }

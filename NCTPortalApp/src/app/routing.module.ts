@@ -8,8 +8,6 @@ import { MapComponent } from './components/map/map.component';
 const routes: Routes = [
   { path: 'rectangle-container', component: RectangleContainerComponent },
   { path: 'report-add-form', component: ReportAddFormComponent },
-  { path: 'report-more-info', component: MoreInfoComponent },
-  { path: 'map', component: MapComponent },
   { path: '', redirectTo: '/rectangle-container', pathMatch: 'full' }, // Default route
 ];
 
