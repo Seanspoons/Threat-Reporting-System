@@ -18,8 +18,6 @@ export class RectangleContainerComponent implements OnInit {
   }
 
   onMap() {
-    // Have to deal with map already being open
-    console.log(this.routeService.isOnRectangleMap);
     if(this.routeService.isOnRectangleMap) {
       console.log("Error Map is already open");
       // Error: map is already open

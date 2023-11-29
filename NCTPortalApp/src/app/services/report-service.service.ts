@@ -23,7 +23,7 @@ export class ReportServiceService{
       .subscribe((data)=>{
         var rows = <Array<any>>data;
         for(let i = 0; i < rows.length; i++) {
-          this.reports.push(new NuisanceReport(new Person(rows[i].data.reporter.name, rows[i].data.reporter.phoneNumber), rows[i].data.baddieName, rows[i].data.location, rows[i].data.description));
+          this.reports.push(new NuisanceReport(new Person(rows[i].data.reporter.name, rows[i].data.reporter.phoneNumber), rows[i].data.baddieName, rows[i].data.location, rows[i].data.imgURL, rows[i].data.description));
           this.firstLoad = false;
         }
       })

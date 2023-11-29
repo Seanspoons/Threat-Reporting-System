@@ -5,16 +5,18 @@ export class NuisanceReport {
     reporter: Person;
     baddieName: string;
     location: string;
+    imgURL: string;
     date: Date;
     description: string;
     status: boolean; // true means open; false means closed
 
 
-    constructor(reporter: Person, baddieName: string, location: string, description: string) {
+    constructor(reporter: Person, baddieName: string, location: string, imgURL: string, description: string) {
         this.id = idGenerator();
         this.reporter = reporter;
         this.baddieName = baddieName
         this.location = location;
+        this.imgURL = imgURL;
         this.date = new Date();
         this.description = description;
         this.status = true;

@@ -19,6 +19,7 @@ export class ReportAddFormComponent {
       phoneNumber: new FormControl('', Validators.required),
       baddieName: new FormControl('', Validators.required),
       location: new FormControl('', Validators.required),
+      imgURL: new FormControl(''),
       description: new FormControl('')
     }
     this.form = new FormGroup(formControls)
@@ -28,7 +29,7 @@ export class ReportAddFormComponent {
   onSubmit() {
     if (this.form.valid) {
       let newReporter = new Person(this.form.get('reporter')!.value, this.form.get('phoneNumber')!.value);
-      let newReport = new NuisanceReport(newReporter, this.form.get('baddieName')!.value ,this.form.get('location')!.value, this.form.get('description')!.value);
+      let newReport = new NuisanceReport(newReporter, this.form.get('baddieName')!.value ,this.form.get('location')!.value, this.form.get('imgURL')!.value, this.form.get('description')!.value);
   
       this.reportService.add(newReport);
     }
