@@ -51,6 +51,11 @@
     background-color: #2945aa;
 }
 
+.rectangle-button:disabled {
+    background-color: #D6D6D6;
+    color: #6e6e6e;
+}
+
 .button-holder {
     display: flex;
     flex-direction: row;

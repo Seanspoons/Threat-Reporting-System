@@ -17,6 +17,14 @@ export class RectangleContainerComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  checkButtonState(): boolean {
+    if(this.routeService.isOnRectangleMap || this.routeService.isOnThreeComponents) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   onMap() {
     if(this.routeService.isOnRectangleMap) {
       console.log("Error Map is already open");
