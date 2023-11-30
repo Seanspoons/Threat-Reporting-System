@@ -57,7 +57,16 @@ export class MapComponent implements OnInit {
   }
 
   onAddLocation() {
-    this.getTemporaryMarkerCoordinates(); // need to get the lat and long
+    let coords = this.getTemporaryMarkerCoordinates();
+    let lat: number;
+    let long: number;
+    if(coords) {
+      lat = coords[0];
+      long = coords[1];
+      console.log("Lat is: " + lat + " and Long is: " + long);
+      // It is working. Just need to get name and then can create a new location object for locationService and push onto locations
+    }
+    
   }
 
   checkButtonState(): boolean {
