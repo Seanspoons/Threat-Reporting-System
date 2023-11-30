@@ -53,8 +53,7 @@ export class ReportAddFormComponent implements OnInit {
       let newLocation = new MapLocation(foundLocation!.location, foundLocation!.lat, foundLocation!.long);
       let newReporter = new Person(this.form.get('reporter')!.value, this.form.get('phoneNumber')!.value);
       let newReport = new NuisanceReport(newReporter, this.form.get('baddieName')!.value , newLocation, this.form.get('imgURL')!.value, this.form.get('description')!.value);
-  
-      console.log("adding report");
+      
       this.reportService.add(newReport);
       this.locationService.firstAdd = true;
     }

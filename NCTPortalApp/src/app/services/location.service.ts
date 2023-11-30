@@ -36,7 +36,6 @@ export class LocationService{
 
   add(newLocation: MapLocation) {
     this.firstAdd = false;
-    console.log("Adding new location. HEre is the object: " + newLocation);
     this.http.post<MapLocation>('https://272.selfip.net/apps/22m6j5mz3y/collections/locations/documents/', {
       "key": newLocation.location,
       "data": newLocation
