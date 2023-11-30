@@ -22,7 +22,7 @@ export class ReportAddFormComponent implements OnInit {
     this.locationService.get();
     this.locations = [];
     let formControls = {
-      reporter: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      reporter: new FormControl('', [Validators.required, Validators.minLength(2)]),
       phoneNumber: new FormControl('', Validators.required),
       baddieName: new FormControl('', Validators.required),
       location: new FormControl('', Validators.required),

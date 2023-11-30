@@ -104,6 +104,7 @@ export class MapComponent implements OnInit {
     this.temporaryMarker = L.marker([event.latlng.lat, event.latlng.lng])
       .addTo(this.map!)
       .bindPopup('New Location');
+      console.log("Marker added");
       this.markerAdded = true;
   }
 
