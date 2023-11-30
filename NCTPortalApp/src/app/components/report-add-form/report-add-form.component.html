@@ -46,7 +46,7 @@
                     <th>Baddie's Location</th>
                     <td>
                         <span id="location-row">
-                            <button id="add-location-button" (click)="onAddNewLocation()" type="button" [disabled]="isAdding()">Add</button>
+                            <button id="add-location-button" (click)="onAddNewLocation()" type="button" [disabled]="checkAddStatus()">Add</button>
                             <select
                                 formControlName="location"
                             >

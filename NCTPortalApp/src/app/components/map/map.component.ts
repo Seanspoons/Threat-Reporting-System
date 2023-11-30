@@ -73,6 +73,7 @@ export class MapComponent implements OnInit {
         lat = coords[0];
         long = coords[1];
         let newLocation = new MapLocation(newLocationName, lat, long);
+        console.log("Lat: + " + lat + " Long: " + long + " and name: " + newLocationName);
         this.locationService.add(newLocation);
       }
       this.router.navigate(['report-add-form']);

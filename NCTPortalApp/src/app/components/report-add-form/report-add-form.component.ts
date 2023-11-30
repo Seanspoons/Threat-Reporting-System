@@ -36,8 +36,8 @@ export class ReportAddFormComponent implements OnInit {
     this.locations = this.locationService.locations;
   }
 
-  isAdding(): boolean {
-    if(this.routeService.isOnAddFormMap) {
+  checkAddStatus(): boolean {
+    if(this.routeService.isOnAddFormMap || !this.locationService.firstAdd) {
       return true;
     } else {
       return false;
@@ -56,6 +56,7 @@ export class ReportAddFormComponent implements OnInit {
   
       console.log("adding report");
       this.reportService.add(newReport);
+      this.locationService.firstAdd = true;
     }
   }
 
