@@ -130,3 +130,16 @@ tr:nth-child(even) {
 #submit-button {
     width: 80%
 }
+
+#add-location-button:hover {
+    background-color: #4f6dd1;
+}
+
+#add-location-button:active {
+    background-color: #2945aa;
+}
+
+#add-location-button:disabled {
+    background-color: #a5a5a5;
+    color: #6e6e6e;
+}

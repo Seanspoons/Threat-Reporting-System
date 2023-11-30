@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as L from 'leaflet';
 import { MapLocation } from 'src/app/models/map-location';
@@ -12,13 +13,19 @@ import { RouteStateService } from 'src/app/services/route-state.service';
 })
 export class MapComponent implements OnInit {
 
+  form: FormGroup;
   map: L.Map | undefined;
   locations: MapLocation[];
   temporaryMarker: L.Marker | undefined;
+  markerAdded = false;
 
   constructor(private routeService: RouteStateService, private router: Router, private locationService: LocationService) { 
     this.locationService.get();
     this.locations = [];
+    let formControls = {
+      newLocation: new FormControl('', [Validators.required, Validators.minLength(4)]) // Need to deal with duplicates
+    }
+    this.form = new FormGroup(formControls)
   }
 
   ngOnInit(): void {
@@ -57,16 +64,27 @@ export class MapComponent implements OnInit {
   }
 
   onAddLocation() {
-    let coords = this.getTemporaryMarkerCoordinates();
-    let lat: number;
-    let long: number;
-    if(coords) {
-      lat = coords[0];
-      long = coords[1];
-      console.log("Lat is: " + lat + " and Long is: " + long);
-      // It is working. Just need to get name and then can create a new location object for locationService and push onto locations
+    if (this.form.valid) {
+      let newLocationName = this.form.get('newLocation')!.value;
+      let coords = this.getTemporaryMarkerCoordinates();
+      let lat: number;
+      let long: number;
+      if(coords) {
+        lat = coords[0];
+        long = coords[1];
+        let newLocation = new MapLocation(newLocationName, lat, long);
+        this.locationService.add(newLocation);
+      }
+      this.router.navigate(['report-add-form']);
     }
-    
+  }
+
+  isInvalid() {
+    if(!this.markerAdded || !this.form.valid) {
+      return true;
+    } else {
+      return false
+    }
   }
 
   checkButtonState(): boolean {
@@ -85,6 +103,7 @@ export class MapComponent implements OnInit {
     this.temporaryMarker = L.marker([event.latlng.lat, event.latlng.lng])
       .addTo(this.map!)
       .bindPopup('New Location');
+      this.markerAdded = true;
   }
 
   getTemporaryMarkerCoordinates(): [number, number] | undefined {

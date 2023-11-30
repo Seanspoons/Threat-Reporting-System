@@ -14,7 +14,7 @@ export class LocationService{
   addingMarker = false;
 
   constructor(private http: HttpClient) {
-    this.locations = [new MapLocation("Home", 49.28297, -122.74482)];
+    this.locations = [];
   }
 
   get() {

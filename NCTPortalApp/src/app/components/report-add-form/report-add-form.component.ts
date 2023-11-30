@@ -19,6 +19,7 @@ export class ReportAddFormComponent implements OnInit {
   locations: MapLocation[];
 
   constructor(private reportService: ReportServiceService, private routeService: RouteStateService, private router: Router, private locationService: LocationService) {
+    this.locationService.get();
     this.locations = [];
     let formControls = {
       reporter: new FormControl('', [Validators.required, Validators.minLength(4)]),
@@ -35,6 +36,14 @@ export class ReportAddFormComponent implements OnInit {
     this.locations = this.locationService.locations;
   }
 
+  isAdding(): boolean {
+    if(this.routeService.isOnAddFormMap) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 
   onSubmit() {
     if (this.form.valid) {
@@ -45,6 +54,7 @@ export class ReportAddFormComponent implements OnInit {
       let newReporter = new Person(this.form.get('reporter')!.value, this.form.get('phoneNumber')!.value);
       let newReport = new NuisanceReport(newReporter, this.form.get('baddieName')!.value , newLocation, this.form.get('imgURL')!.value, this.form.get('description')!.value);
   
+      console.log("adding report");
       this.reportService.add(newReport);
     }
   }

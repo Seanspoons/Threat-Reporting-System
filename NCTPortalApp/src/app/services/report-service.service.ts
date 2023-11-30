@@ -10,11 +10,10 @@ export class ReportServiceService{
 
   reports: NuisanceReport[];
   public report!: NuisanceReport;
-  firstLoad: boolean;
+  firstLoad = true;
 
   constructor(private http: HttpClient) {
     this.reports = [];
-    this.firstLoad = true;
   }
 
   get() { // I think it is going through this everytime there is an addition too. Which ends up creating too many elements in the table. Possibly look at how I might be pushing onto array in the add already
@@ -23,7 +22,11 @@ export class ReportServiceService{
       .subscribe((data)=>{
         var rows = <Array<any>>data;
         for(let i = 0; i < rows.length; i++) {
-          this.reports.push(new NuisanceReport(new Person(rows[i].data.reporter.name, rows[i].data.reporter.phoneNumber), rows[i].data.baddieName, rows[i].data.location, rows[i].data.imgURL, rows[i].data.description));
+          let newReport = new NuisanceReport(new Person(rows[i].data.reporter.name, rows[i].data.reporter.phoneNumber), rows[i].data.baddieName, rows[i].data.location, rows[i].data.imgURL, rows[i].data.description);
+          newReport.id = rows[i].data.id;
+          newReport.date = rows[i].data.date;
+          newReport.status = rows[i].data.status;
+          this.reports.push(newReport);
           this.firstLoad = false;
         }
       })
@@ -40,12 +43,12 @@ export class ReportServiceService{
     }).subscribe(
       (data: any) => {
         this.reports.push(newReport);
+        this.firstLoad = false;
       }
     );
   }
 
   delete(deleteReportID: string) {
-    console.log("Here is the id for deletion: " + deleteReportID);
     const url = `https://272.selfip.net/apps/22m6j5mz3y/collections/reports/documents//${deleteReportID}`;
     this.http.delete(url).subscribe(
       (data: any) => {
