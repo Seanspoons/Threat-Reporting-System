@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NuisanceReport } from 'src/app/models/nuisance-report';
+import { ReportServiceService } from 'src/app/services/report-service.service';
 
 @Component({
   selector: 'app-more-info',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoreInfoComponent implements OnInit {
 
-  constructor() { }
+  public report!: NuisanceReport;
+
+  constructor(private reportService: ReportServiceService) {}
 
   ngOnInit(): void {
+    this.report = this.reportService.report;
   }
 
 }

@@ -4,6 +4,7 @@ import { ReportServiceService } from 'src/app/services/report-service.service';
 import { RectangleContainerComponent } from '../rectangle-container/rectangle-container.component';
 import { Router } from '@angular/router';
 import { RouteStateService } from 'src/app/services/route-state.service';
+import { MoreInfoComponent } from '../more-info/more-info.component';
 
 @Component({
   selector: 'app-table',
@@ -32,16 +33,21 @@ export class TableComponent implements OnInit {
   }
 
   onMoreInfo(reportID: string) {
-    if(this.routeService.isOnRectangleMoreInfo) {
-      console.log("Error: More Info is already open");
-      // Error already open
-    } else {
-      if(this.routeService.isOnRectangleMap) {
-        this.router.navigate(['/three-components']);
-      } else if(this.routeService.isOnRectangleContainer) {
-        this.router.navigate(['/rectangle-more-info']);
-      }
+    const foundReport = this.reportService.reports.find(report => report.id === reportID);
+    if(foundReport) {
+      this.reportService.report = foundReport;
+      if(this.routeService.isOnRectangleMoreInfo) {
+        console.log("Error: More Info is already open");
+        // Error already open
+      } else {
+        if(this.routeService.isOnRectangleMap) {
+          this.router.navigate(['/three-components']);
+        } else if(this.routeService.isOnRectangleContainer) {
+          this.router.navigate(['/rectangle-more-info']);
+        }
+      } 
     }
+     
   }
 
 }

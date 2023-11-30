@@ -1,6 +1,55 @@
 <div class="more-info-container">
     <h2 class="more-info-container-title">More Info</h2>
-    <div class="content-container"></div>
+    <div class="content-container">
+
+        <span class="img-holder">
+            <img class="img" *ngIf="report?.imgURL; else placeholder" [src]="report.imgURL">
+            <ng-template #placeholder>
+                <img class="img" src="../assets/img/monster.png">
+            </ng-template>
+        </span>
+        <table class="more-info-table">
+            <tr class="regular-row"> 
+                <th>Reporter's Name</th>
+                <td>
+                    {{ report.reporter.name }}
+                </td>
+            </tr>
+
+            <tr class="regular-row"> 
+                <th>Reporter's Phone Number</th>
+                <td>
+                    {{ report.reporter.phoneNumber }}
+                </td>
+            </tr>
+
+            <tr class="regular-row"> 
+                <th>Baddie's Name</th>
+                <td>
+                    {{ report.baddieName }}
+                </td>
+            </tr>
+
+            <tr class="regular-row"> 
+                <th>Baddie's Location</th>
+                <td>
+                    {{ report.location }}
+                </td>
+            </tr>
+
+            <tr class="large-row" id="description"> 
+                <th>Description and Notes</th>
+                <td>
+                    {{ report.description }}
+                </td>
+            </tr>
+
+        </table>
+            
+    </div>
+    <span class="button-holder">
+        <button id="back-button" class="back-button" [routerLink]="['/rectangle-container']">Back</button>
+    </span>
 </div>
 
 

@@ -10,6 +10,7 @@ import { Observable, map } from 'rxjs';
 export class ReportServiceService{
 
   reports: NuisanceReport[];
+  public report!: NuisanceReport;
   firstLoad: boolean;
 
   constructor(private http: HttpClient) {
