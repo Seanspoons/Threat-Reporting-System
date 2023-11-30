@@ -2,7 +2,6 @@ import { ChangeDetectorRef, Injectable, OnInit } from '@angular/core';
 import { NuisanceReport } from '../models/nuisance-report';
 import { Person } from '../models/person';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

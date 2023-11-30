@@ -1,17 +1,18 @@
+import { MapLocation } from './map-location';
 import { Person } from './person';
 
 export class NuisanceReport {
     id: string;
     reporter: Person;
     baddieName: string;
-    location: string;
+    location: MapLocation;
     imgURL: string;
     date: Date;
     description: string;
     status: boolean; // true means open; false means closed
 
 
-    constructor(reporter: Person, baddieName: string, location: string, imgURL: string, description: string) {
+    constructor(reporter: Person, baddieName: string, location: MapLocation, imgURL: string, description: string) {
         this.id = idGenerator();
         this.reporter = reporter;
         this.baddieName = baddieName

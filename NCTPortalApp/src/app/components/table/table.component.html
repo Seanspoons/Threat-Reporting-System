@@ -14,7 +14,7 @@
         class="regular-row"
     >
         <td class="large-cell">{{ r.baddieName }}</td>
-        <td class="large-cell">{{ r.location }}</td>
+        <td class="large-cell">{{ r.location.location }}</td>
         <td class="large-cell">{{ r.date | date:'dd/MMM/yyyy h:mm a' }}</td>
         <td>
             <span *ngIf="r.status; then open else closed"></span> <br>

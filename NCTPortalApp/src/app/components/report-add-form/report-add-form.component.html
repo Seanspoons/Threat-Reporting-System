@@ -45,12 +45,15 @@
                 <tr class="regular-row"> 
                     <th>Baddie's Location</th>
                     <td>
-                        <input 
-                            type="text"
-                            name="location"
-                            placeholder="baddie's location"
-                            formControlName="location"
-                        >
+                        <span id="location-row">
+                            <button id="add-location-button" (click)="onAddNewLocation()">Add</button>
+                            <select
+                                formControlName="location"
+                            >
+                                <option value="" disabled selected hidden>Select a location</option>
+                                <option *ngFor="let l of locations" [value]="l.location" >{{ l.location }}</option>
+                            </select>
+                        </span>
                     </td>
                 </tr>
 

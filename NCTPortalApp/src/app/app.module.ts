@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ThreeComponentsComponent } from './components/three-components/three-components.component';
 import { TwoComponentsComponent } from './components/two-components/two-components.component';
 import { TwoComponentsMoreInfoComponent } from './components/two-components-more-info/two-components-more-info.component';
+import { AddFormMapComponent } from './components/add-form-map/add-form-map.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { TwoComponentsMoreInfoComponent } from './components/two-components-more
     MoreInfoComponent,
     ThreeComponentsComponent,
     TwoComponentsComponent,
-    TwoComponentsMoreInfoComponent
+    TwoComponentsMoreInfoComponent,
+    AddFormMapComponent
   ],
   imports: [
     BrowserModule,

@@ -1,19 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, ValidatorFn } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MapLocation } from 'src/app/models/map-location';
 import { NuisanceReport } from 'src/app/models/nuisance-report';
 import { Person } from 'src/app/models/person';
+import { LocationService } from 'src/app/services/location.service';
 import { ReportServiceService } from 'src/app/services/report-service.service';
+import { RouteStateService } from 'src/app/services/route-state.service';
 
 @Component({
   selector: 'app-report-add-form',
   templateUrl: './report-add-form.component.html',
   styleUrls: ['./report-add-form.component.css']
 })
-export class ReportAddFormComponent {
+export class ReportAddFormComponent implements OnInit {
 
   form: FormGroup;
+  locations: MapLocation[];
 
-  constructor(private reportService: ReportServiceService) {
+  constructor(private reportService: ReportServiceService, private routeService: RouteStateService, private router: Router, private locationService: LocationService) {
+    this.locations = [];
     let formControls = {
       reporter: new FormControl('', [Validators.required, Validators.minLength(4)]),
       phoneNumber: new FormControl('', Validators.required),
@@ -25,14 +31,31 @@ export class ReportAddFormComponent {
     this.form = new FormGroup(formControls)
   }
 
+  ngOnInit(): void {
+    this.locations = this.locationService.locations;
+  }
+
 
   onSubmit() {
     if (this.form.valid) {
+      let targetLocation = this.form.get('location')!.value;
+      const foundLocation = this.locations.find(location => location.location === targetLocation);
+
+      let newLocation = new MapLocation(foundLocation!.location, foundLocation!.lat, foundLocation!.long);
       let newReporter = new Person(this.form.get('reporter')!.value, this.form.get('phoneNumber')!.value);
-      let newReport = new NuisanceReport(newReporter, this.form.get('baddieName')!.value ,this.form.get('location')!.value, this.form.get('imgURL')!.value, this.form.get('description')!.value);
+      let newReport = new NuisanceReport(newReporter, this.form.get('baddieName')!.value , newLocation, this.form.get('imgURL')!.value, this.form.get('description')!.value);
   
       this.reportService.add(newReport);
     }
   }
 
+  onAddNewLocation() {
+    if(this.routeService.isOnAddFormMap) {
+      // Error map is already open
+      // Tell user to use the open map
+    } else {
+      this.router.navigate(['add-form-map']);
+      this.locationService.addingMarker = true;
+    }
+  }
 }

@@ -33,7 +33,23 @@
             <tr class="regular-row"> 
                 <th>Baddie's Location</th>
                 <td>
-                    {{ report.location }}
+                    {{ report.location.location }}
+                </td>
+            </tr>
+
+            <tr class="regular-row"> 
+                <th>Time Reported</th>
+                <td>
+                    {{ report.date | date:'dd/MMM/yyyy h:mm a' }}
+                </td>
+            </tr>
+
+            <tr class="regular-row"> 
+                <th>Status</th>
+                <td>
+                    <span *ngIf="report.status; then open else closed"></span> <br>
+                    <ng-template #open><i class="bi bi-check-circle"></i></ng-template>
+                    <ng-template #closed><i class="bi bi-x-circle"></i></ng-template>
                 </td>
             </tr>
 

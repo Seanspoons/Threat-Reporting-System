@@ -13,6 +13,7 @@ export class RouteStateService {
   public isOnRectangleContainer = true;
   public isOnThreeComponents = false;
   public isOnAddForm = false;
+  public isOnAddFormMap = false;
 
   constructor(private router: Router) {
     this.routerSubscription = this.router.events.subscribe((event) => {
@@ -32,5 +33,6 @@ export class RouteStateService {
     this.isOnRectangleMoreInfo = url.includes('/rectangle-more-info');
     this.isOnThreeComponents = url.includes('three-components');
     this.isOnAddForm = url.includes('report-add-form');
+    this.isOnAddFormMap = url.includes('add-form-map');
   }
 }
