@@ -33,7 +33,7 @@ export class ReportAddFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.locations = this.locationService.locations;
+    this.locations = this.reportService.locations;
   }
 
   checkAddStatus(): boolean {
@@ -43,7 +43,6 @@ export class ReportAddFormComponent implements OnInit {
       return false;
     }
   }
-
 
   onSubmit() {
     if (this.form.valid) {

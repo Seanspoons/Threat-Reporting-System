@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MapLocation } from '../models/map-location';
-import * as L from 'leaflet';
-import { LeafletMouseEvent } from 'leaflet';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +12,7 @@ export class LocationService{
   addingMarker = false;
   firstAdd = true;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) { //, private reportService: ReportServiceService
     this.locations = [];
   }
 
@@ -32,9 +30,7 @@ export class LocationService{
         }
       })
     } else {
-      
     }
-    
   }
 
   add(newLocation: MapLocation) {
@@ -54,7 +50,6 @@ export class LocationService{
     this.http.delete(url).subscribe(
       (data: any) => {
         this.locations = this.locations.filter(l=> l.id !== deleteLocationID);
-        // Need to detect changes
       }
     );
   }

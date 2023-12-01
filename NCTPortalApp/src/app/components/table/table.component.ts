@@ -17,12 +17,14 @@ export class TableComponent implements OnInit {
   query: string;
 
   constructor(private reportService: ReportServiceService, private routeService: RouteStateService, private router: Router, private rectangleContainer: RectangleContainerComponent) {
+    console.log("Table constructor");
     this.query='';
     this.reports = [];
     this.reportService.get();
   }
 
   ngOnInit(): void {
+    console.log("Table OnInit");
     this.reports = this.reportService.reports;
   }
 

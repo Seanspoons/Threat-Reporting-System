@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import * as L from 'leaflet';
 import { MapLocation } from 'src/app/models/map-location';
 import { LocationService } from 'src/app/services/location.service';
+import { ReportServiceService } from 'src/app/services/report-service.service';
 import { RouteStateService } from 'src/app/services/route-state.service';
 
 @Component({
@@ -15,11 +16,11 @@ export class MapComponent implements OnInit {
 
   form: FormGroup;
   map: L.Map | undefined;
-  locations: MapLocation[];
+  locations: any[];
   temporaryMarker: L.Marker | undefined;
   markerAdded = false;
 
-  constructor(private routeService: RouteStateService, private router: Router, private locationService: LocationService) { 
+  constructor(private routeService: RouteStateService, private router: Router, private locationService: LocationService, private reportService: ReportServiceService) { 
     this.locationService.get();
     this.locations = [];
     let formControls = {
@@ -29,7 +30,7 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.locations = this.locationService.locations;
+    this.locations = this.reportService.locations;
     this.initMap();
     this.addMarkers();
     if(this.locationService.addingMarker) {
@@ -46,9 +47,16 @@ export class MapComponent implements OnInit {
   }
 
   addMarkers() {
+    var markerIcon = L.icon({
+      iconUrl: '../assets/img/marker-icon.png',
+      iconSize: [17,28],
+      iconAnchor: [8.5,28],
+      popupAnchor: [0,-28]
+    });
+
     if(this.map) {
       this.locations.forEach(location => {
-        L.marker([location.lat, location.long]).addTo(this.map!).bindPopup(`<b>${location.location}</b> <br> ${location.reportCount} nuisance reports`);
+        L.marker([location.lat, location.long], {icon: markerIcon}).addTo(this.map!).bindPopup(`<b>${location.location}</b> <br> ${location.reportCount} nuisance reports`);
       })
     }
   }
@@ -73,9 +81,10 @@ export class MapComponent implements OnInit {
         lat = coords[0];
         long = coords[1];
         let newLocation = new MapLocation(newLocationName, lat, long);
-        console.log("Lat: + " + lat + " Long: " + long + " and name: " + newLocationName);
-        this.locationService.add(newLocation);
+        this.reportService.locations.push(newLocation);
+        this.locationService.addingMarker = false;
       }
+      this.locationService.firstAdd = false;
       this.router.navigate(['report-add-form']);
     }
   }
@@ -97,14 +106,20 @@ export class MapComponent implements OnInit {
   }
 
   addTemporaryMarker(event: L.LeafletMouseEvent) {
+    var markerIcon = L.icon({
+      iconUrl: '../assets/img/marker-icon.png',
+      iconSize: [25,41],
+      iconAnchor: [12.5,41],
+      popupAnchor: [0,-41]
+    });
+
     if (this.temporaryMarker) {
       this.map?.removeLayer(this.temporaryMarker);
     }
 
-    this.temporaryMarker = L.marker([event.latlng.lat, event.latlng.lng])
+    this.temporaryMarker = L.marker([event.latlng.lat, event.latlng.lng], {icon: markerIcon})
       .addTo(this.map!)
       .bindPopup('New Location');
-      console.log("Marker added");
       this.markerAdded = true;
   }
 
