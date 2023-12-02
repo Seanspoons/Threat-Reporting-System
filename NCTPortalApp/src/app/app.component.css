@@ -28,9 +28,34 @@
 
 #app-title {
     color: white;
+}
+
+#header-info {
+    display: flex;
+    width: 3em;
+    height: 3em;
+    margin-right: 1em;
+}
+
+#header{
     padding-left: 2vw;
     padding-top: 2vh;
     align-self: flex-start;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#info-img2 {
+    display: none;
+}
+
+#header-info:hover #info-img1 {
+    display: none;
+}
+
+#header-info:hover #info-img2 {
+    display: flex;
 }
 
 .view-map-button {

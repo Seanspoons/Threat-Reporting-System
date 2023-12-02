@@ -8,6 +8,7 @@ import { TwoComponentsMoreInfoComponent } from './components/two-components-more
 import { AddFormMapComponent } from './components/add-form-map/add-form-map.component';
 import { VerificationComponent } from './components/verification/verification.component';
 import { EditReportComponent } from './components/edit-report/edit-report.component';
+import { InformationComponent } from './components/information/information.component';
 
 const routes: Routes = [
   { path: 'rectangle-container', component: RectangleContainerComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'three-components', component: ThreeComponentsComponent},
   { path: 'verification', component: VerificationComponent},
   { path: 'edit-report', component: EditReportComponent},
+  { path: 'information', component: InformationComponent},
   { path: '', redirectTo: '/rectangle-container', pathMatch: 'full' }, // Default route
 ];
 
