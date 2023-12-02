@@ -1,0 +1,105 @@
+.verification-container {
+    border-radius: 20px;
+    width: 45vw;
+    height: 75vh;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    background-color: rgba(88,81,80,0.85);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3em;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+    width: 100%;
+    height: 85%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+}
+
+.content-container2 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.verification-container-title {
+    color: white;
+    padding-left: 1vw;
+    padding-top: 1vh;
+    align-self: flex-start;
+}
+
+table {
+    width: 100%;
+}
+
+.regular-row {
+    height: 75px;
+    width: 100%;
+}
+
+th {
+    padding-left: 2.5%;
+}
+
+td {
+    padding: 2%;
+}
+
+input {
+    width: 100%;
+}
+
+tr:nth-child(odd) {
+    background-color: #D6D6D6;
+}
+
+#login-button {
+    width: 80%
+}
+
+.login-page-button {
+    background-color: #2945aa;
+    border: none;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    color: white;
+    border-radius: 20px;
+    height: 3em;
+}
+
+.login-page-button:hover {
+    background-color: #4f6dd1;
+}
+
+.login-page-button:active {
+    background-color: #2945aa;
+}
+
+.login-page-button:disabled {
+    background-color: #a5a5a5;
+    color: #6e6e6e;
+}
+
+.button-holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 96%;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+#back-button {
+    width: 15%;
+    margin-right: 2em;
+}

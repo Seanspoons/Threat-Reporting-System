@@ -17,6 +17,8 @@ import { ThreeComponentsComponent } from './components/three-components/three-co
 import { TwoComponentsComponent } from './components/two-components/two-components.component';
 import { TwoComponentsMoreInfoComponent } from './components/two-components-more-info/two-components-more-info.component';
 import { AddFormMapComponent } from './components/add-form-map/add-form-map.component';
+import { VerificationComponent } from './components/verification/verification.component';
+import { EditReportComponent } from './components/edit-report/edit-report.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { AddFormMapComponent } from './components/add-form-map/add-form-map.comp
     ThreeComponentsComponent,
     TwoComponentsComponent,
     TwoComponentsMoreInfoComponent,
-    AddFormMapComponent
+    AddFormMapComponent,
+    VerificationComponent,
+    EditReportComponent
   ],
   imports: [
     BrowserModule,

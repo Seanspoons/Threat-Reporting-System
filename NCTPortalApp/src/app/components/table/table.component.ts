@@ -5,6 +5,7 @@ import { RectangleContainerComponent } from '../rectangle-container/rectangle-co
 import { Router } from '@angular/router';
 import { RouteStateService } from 'src/app/services/route-state.service';
 import { MoreInfoComponent } from '../more-info/more-info.component';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-table',
@@ -16,7 +17,12 @@ export class TableComponent implements OnInit {
   reports: NuisanceReport[];
   query: string;
 
-  constructor(private reportService: ReportServiceService, private routeService: RouteStateService, private router: Router, private rectangleContainer: RectangleContainerComponent) {
+  constructor(
+      private reportService: ReportServiceService,
+      private routeService: RouteStateService,
+      private loginService: LoginService,
+      private router: Router
+      ) {
     this.query='';
     this.reports = [];
     this.reportService.get();
@@ -26,10 +32,19 @@ export class TableComponent implements OnInit {
     this.reports = this.reportService.reports;
   }
 
-  onReportDelete(reportID: string) {
-    // Need to authenticate first
-    // For now just allow delete from button click
-    this.reportService.delete(reportID);
+  onReportMenu(reportID: string) {
+    if(this.routeService.isOnRectangleContainer) {
+      this.loginService.wasOnRectangleContainer = true;
+    } else if(this.routeService.isOnRectangleMap) {
+      this.loginService.wasOnRectangleMap = true;
+    } else if(this.routeService.isOnRectangleMoreInfo) {
+      this.loginService.wasOnRectangleMoreInfo = true;
+    } else if(this.routeService.isOnThreeComponents) {
+      this.loginService.wasOnThreeComponents = true;
+    }
+
+    this.router.navigate(['/verification']);
+    this.loginService.reportID = reportID;
   }
 
   onMoreInfo(reportID: string) {

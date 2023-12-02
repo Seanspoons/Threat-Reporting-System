@@ -1,0 +1,22 @@
+<div class="report-form-container">
+    <h2 class="report-form-title">Report Baddie</h2>
+    <div class="content-container">
+
+        <form 
+            [formGroup]="form"
+        >
+        </form>
+    </div>
+    <span class="button-holder">
+        <button id="back-button" class="add-form-button" [routerLink]="['/rectangle-container']">Back</button>
+        <button
+            id="submit-button"
+            class="add-form-button"
+            (click)="onSubmit()"
+            [disabled]="!form.valid"
+            [routerLink]="['/rectangle-container']"
+        >
+            Submit Changes
+        </button>
+    </span>
+</div>

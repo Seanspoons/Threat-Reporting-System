@@ -1,0 +1,26 @@
+<div class="verification-container">
+    <h2 class="verification-container-title">Login</h2>
+    <div class="content-container">
+        <div class="content-container2">
+            <form [formGroup]="form">
+                <table>
+                    <tr class="regular-row">
+                        <th>Enter Verified Password</th> 
+                        <td>
+                            <input
+                                type="text"
+                                name="password"
+                                placeholder="enter password"
+                                formControlName="password"
+                            >
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <span class="button-holder">
+        <button id="back-button" class="login-page-button" (click)="onBack()">Back</button>
+        <button id="login-button" class="login-page-button" (click)="onSubmit()" [disabled]="!form.valid">Login</button>
+    </span>
+</div>
