@@ -4,6 +4,7 @@ import { Person } from '../models/person';
 import { HttpClient } from '@angular/common/http';
 import { LocationService } from './location.service';
 import { MapLocation } from '../models/map-location';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,9 @@ export class ReportServiceService{
   locations: any[];
   public report!: NuisanceReport;
   firstLoad = true;
+  justDeleted = false;
 
-  constructor(private http: HttpClient, private locationService: LocationService) {
+  constructor(private http: HttpClient, private locationService: LocationService, private router: Router) {
     this.reports = [];
     this.locations = [];
   }
@@ -37,8 +39,17 @@ export class ReportServiceService{
       })
     } else {
       
-    }
-    
+    } 
+  }
+
+  edit(editReportID: string, newReportObject: NuisanceReport, newStatus: boolean) { 
+    this.http.put<NuisanceReport>('https://272.selfip.net/apps/22m6j5mz3y/collections/reports/documents/', {
+      "key": editReportID,
+      "data": newReportObject
+    }).subscribe(
+      (data: any) => {
+      }
+    );
   }
 
   add(newReport: NuisanceReport) {
@@ -60,6 +71,8 @@ export class ReportServiceService{
       (data: any) => {
         this.reports = this.reports.filter(r=> r.id !== deleteReportID);
         this.getLocations();
+        this.justDeleted = true;
+        this.router.navigate(['/rectangle-container']);
       }
     );
   }

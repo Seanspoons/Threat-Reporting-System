@@ -1,20 +1,87 @@
-<div class="report-form-container">
-    <h2 class="report-form-title">Report Baddie</h2>
+<div class="edit-form-container">
+    <h2 class="edit-form-container-title">Edit Report</h2>
     <div class="content-container">
 
-        <form 
-            [formGroup]="form"
-        >
-        </form>
+        <span class="img-holder">
+            <img class="img" *ngIf="report?.imgURL; else placeholder" [src]="report.imgURL">
+            <ng-template #placeholder>
+                <img class="img" src="../assets/img/monster.png">
+            </ng-template>
+        </span>
+        <table class="edit-report-table">
+            <tr class="regular-row"> 
+                <th>Reporter's Name</th>
+                <td>
+                    {{ report.reporter.name }}
+                </td>
+            </tr>
+
+            <tr class="regular-row"> 
+                <th>Reporter's Phone Number</th>
+                <td>
+                    {{ report.reporter.phoneNumber }}
+                </td>
+            </tr>
+
+            <tr class="regular-row"> 
+                <th>Baddie's Name</th>
+                <td>
+                    {{ report.baddieName }}
+                </td>
+            </tr>
+
+            <tr class="regular-row"> 
+                <th>Baddie's Location</th>
+                <td>
+                    {{ report.location.location }}
+                </td>
+            </tr>
+
+            <tr class="regular-row"> 
+                <th>Time Reported</th>
+                <td>
+                    {{ report.date | date:'dd/MMM/yyyy h:mm a' }}
+                </td>
+            </tr>
+
+            <tr class="regular-row"> 
+                <th>Status</th>
+                <td>
+                    <div class="status-holder">
+                        <span *ngIf="report.status; then open else closed"></span>
+                        <ng-template #open><i class="bi bi-check-circle"></i></ng-template>
+                        <ng-template #closed><i class="bi bi-x-circle"></i></ng-template>
+
+                        <span *ngIf="report.status; then closeReport else reopenReport"></span> <br>
+                        <ng-template #closeReport><button class="report-status-button" id="close-status-button" (click)="changeStatus(report.status)">Close</button></ng-template>
+                        <ng-template #reopenReport><button class="report-status-button" id="open-status-button" (click)="changeStatus(report.status)">Re-open</button></ng-template>
+                    </div>
+                    
+                </td>
+            </tr>
+
+            <tr class="large-row" id="description"> 
+                <th>Description and Notes</th>
+                <td>
+                    {{ report.description }}
+                </td>
+            </tr>
+        </table>
+
     </div>
     <span class="button-holder">
-        <button id="back-button" class="add-form-button" [routerLink]="['/rectangle-container']">Back</button>
+        <button id="back-button" class="edit-form-button" [routerLink]="['/verification']">Back</button> 
+        <button
+            id="delete-button"
+            class="edit-form-button"
+            (click)="confirmDelete()"
+        >
+            Delete Report
+        </button>
         <button
             id="submit-button"
-            class="add-form-button"
+            class="edit-form-button"
             (click)="onSubmit()"
-            [disabled]="!form.valid"
-            [routerLink]="['/rectangle-container']"
         >
             Submit Changes
         </button>

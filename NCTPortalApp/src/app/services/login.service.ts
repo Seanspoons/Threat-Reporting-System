@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ReportServiceService } from './report-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class LoginService {
   wasOnThreeComponents = false;
   correctPasswordBoolean = false;
 
-  constructor(private http: HttpClient, private router: Router) { 
+  constructor(private http: HttpClient, private router: Router, private reportService: ReportServiceService) { 
     this.reportID = "";
   }
 
@@ -28,7 +29,11 @@ export class LoginService {
           if (hashedPassword !== this.correctPassword) {
             this.correctPasswordBoolean = false
           } else {
-            this.router.navigate(['edit-report']);
+            const foundReport = this.reportService.reports.find(report => report.id === this.reportID);
+            if(foundReport) {
+              this.reportService.report = foundReport;
+              this.router.navigate(['/edit-report']);
+            }
           }
         }
       );

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
+import { ReportServiceService } from 'src/app/services/report-service.service';
 import { RouteStateService } from 'src/app/services/route-state.service';
 
 @Component({
@@ -12,9 +13,15 @@ export class RectangleContainerComponent implements OnInit {
 
   buttonText = "View Report Map";
 
-  constructor(private appComponent: AppComponent, private routeService: RouteStateService, private router: Router) { }
+  constructor(private appComponent: AppComponent, private routeService: RouteStateService, private router: Router, private reportService: ReportServiceService) { }
 
   ngOnInit(): void {
+    console.log("OnInit rectang");
+    if(this.reportService.justDeleted) {
+      console.log("Just deleted now getting");
+      this.reportService.get();
+      this.reportService.justDeleted = false;
+    }
   }
 
   checkButtonState(): boolean {
