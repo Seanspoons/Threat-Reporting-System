@@ -26,22 +26,21 @@ export class EditReportComponent implements OnInit {
     this.report = this.reportService.report;
   }
 
-  changeStatus(currentStatus: boolean) {
-    /*
-    this.report.status = currentStatus;
+  changeStatus(currentStatus: boolean) { 
     const newReportObject = new NuisanceReport(this.report.reporter, this.report.baddieName, this.report.location, this.report.imgURL, this.report.description);
     newReportObject.id = this.report.id;
     newReportObject.date = this.report.date;
     if(currentStatus === true) {
       let newStatus = false;
+      this.report.status = newStatus;
       newReportObject.status = newStatus;
-      this.reportService.edit(this.report.id, newReportObject, newStatus);
+      this.reportService.edit(this.report.id, newReportObject);
     } else {
       let newStatus = true;
+      this.report.status = newStatus;
       newReportObject.status = newStatus;
-      this.reportService.edit(this.report.id, newReportObject, newStatus);
+      this.reportService.edit(this.report.id, newReportObject);
     }
-    */
   }
 
   confirmDelete() {

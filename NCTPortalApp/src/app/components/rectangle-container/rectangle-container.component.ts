@@ -16,9 +16,7 @@ export class RectangleContainerComponent implements OnInit {
   constructor(private appComponent: AppComponent, private routeService: RouteStateService, private router: Router, private reportService: ReportServiceService) { }
 
   ngOnInit(): void {
-    console.log("OnInit rectang");
     if(this.reportService.justDeleted) {
-      console.log("Just deleted now getting");
       this.reportService.get();
       this.reportService.justDeleted = false;
     }

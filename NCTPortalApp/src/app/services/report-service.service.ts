@@ -16,6 +16,7 @@ export class ReportServiceService{
   public report!: NuisanceReport;
   firstLoad = true;
   justDeleted = false;
+  justEdited = false;
 
   constructor(private http: HttpClient, private locationService: LocationService, private router: Router) {
     this.reports = [];
@@ -41,15 +42,27 @@ export class ReportServiceService{
       
     } 
   }
-
-  edit(editReportID: string, newReportObject: NuisanceReport, newStatus: boolean) { 
-    this.http.put<NuisanceReport>('https://272.selfip.net/apps/22m6j5mz3y/collections/reports/documents/', {
-      "key": editReportID,
-      "data": newReportObject
-    }).subscribe(
+  
+  deleteAdd(editReportID: string, newReportObject: NuisanceReport) {
+    const url = `https://272.selfip.net/apps/22m6j5mz3y/collections/reports/documents//${editReportID}`;
+    this.http.delete(url).subscribe(
       (data: any) => {
+        this.reports = this.reports.filter(r=> r.id !== editReportID);
+        this.getLocations();
+        if(!this.justEdited) {
+          this.justDeleted = true;
+          this.router.navigate(['/rectangle-container']);
+        } else {
+          this.add(newReportObject);
+        }
       }
     );
+  }
+
+  edit(editReportID: string, newReportObject: NuisanceReport) { 
+    // Have to use delete and re-add as "Put" is not allowed in reports collection
+    this.justEdited = true;
+    this.deleteAdd(editReportID, newReportObject);
   }
 
   add(newReport: NuisanceReport) {
@@ -60,19 +73,28 @@ export class ReportServiceService{
       (data: any) => {
         this.reports.push(newReport);
         this.getLocations();
-        this.firstLoad = false;
+        if(!this.justEdited) {
+          this.firstLoad = false;
+        } else { // Maybe don't need this?
+          this.justEdited = false;
+        }
       }
     );
   }
 
   delete(deleteReportID: string) {
+    console.log("Delete called with this id: " + deleteReportID);
     const url = `https://272.selfip.net/apps/22m6j5mz3y/collections/reports/documents//${deleteReportID}`;
     this.http.delete(url).subscribe(
       (data: any) => {
         this.reports = this.reports.filter(r=> r.id !== deleteReportID);
         this.getLocations();
         this.justDeleted = true;
-        this.router.navigate(['/rectangle-container']);
+        if(!this.justEdited) {
+          this.router.navigate(['/rectangle-container']);
+        } else {
+          this.justEdited = false;
+        }
       }
     );
   }
