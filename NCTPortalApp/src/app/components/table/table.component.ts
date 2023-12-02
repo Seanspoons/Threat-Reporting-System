@@ -51,7 +51,7 @@ export class TableComponent implements OnInit {
     const foundReport = this.reportService.reports.find(report => report.id === reportID);
     if(foundReport) {
       this.reportService.report = foundReport;
-      if(this.routeService.isOnRectangleMoreInfo) {
+      if(this.routeService.isOnRectangleMoreInfo || this.routeService.isOnThreeComponents) {
         console.log("Error: More Info is already open");
         // Error already open
       } else {
