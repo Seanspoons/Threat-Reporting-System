@@ -66,19 +66,47 @@ export class TableComponent implements OnInit {
   }
 
   sortByBaddieName():void {
-
+    console.log("Sorting by baddie name");
+    /*
+    var baddieArray = this.reportService.sortBaddie();
+    for(let i = 0; i < baddieArray.length; i++) {
+      console.log("Name #" + i + ": " + baddieArray[i].baddieName);
+    }
+    */
+    this.reports = this.reportService.sortBaddie();
   }
 
   sortByLocation(): void {
-
+    console.log("Sorting by location");
+    /*
+    var locationArray = this.reportService.sortLocation();
+    for(let i = 0; i < locationArray.length; i++) {
+      console.log("Name #" + i + ": " + locationArray[i].location.location);
+    }
+    */
+    this.reports = this.reportService.sortLocation();
   }
 
   sortByTime(): void {
-
+    console.log("Sorting by time");
+    /*
+    var timeArray = this.reportService.sortTime();
+    for(let i = 0; i < timeArray.length; i++) {
+      console.log("Name #" + i + ": " + timeArray[i].baddieName);
+    }
+    */
+    this.reports = this.reportService.sortTime();
   }
 
   sortByStatus(): void {
-
+    console.log("Sorting by status");
+    /*
+    var statusArray = this.reportService.sortStatus();
+    for(let i = 0; i < statusArray.length; i++) {
+      console.log("Name #" + i + ": " + statusArray[i].status);
+    }
+    */
+    this.reports = this.reportService.sortStatus();
   }
 
   onReportMenu(reportID: string) {
