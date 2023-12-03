@@ -51,7 +51,7 @@ export class ReportServiceService{
         this.getLocations();
         if(!this.justEdited) {
           this.justDeleted = true;
-          this.router.navigate(['/rectangle-container']);
+          this.router.navigate(['/table']);
         } else {
           this.add(newReportObject);
         }
@@ -90,7 +90,7 @@ export class ReportServiceService{
         this.getLocations();
         this.justDeleted = true;
         if(!this.justEdited) {
-          this.router.navigate(['/rectangle-container']);
+          this.router.navigate(['/table']);
         } else {
           this.justEdited = false;
         }

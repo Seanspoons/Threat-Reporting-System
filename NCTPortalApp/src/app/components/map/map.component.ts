@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import * as L from 'leaflet';
 import { MapLocation } from 'src/app/models/map-location';
 import { LocationService } from 'src/app/services/location.service';
 import { ReportServiceService } from 'src/app/services/report-service.service';
 import { RouteStateService } from 'src/app/services/route-state.service';
+import { DuplicateErrorComponent } from '../duplicate-error/duplicate-error.component';
 
 @Component({
   selector: 'app-map',
@@ -17,22 +19,38 @@ export class MapComponent implements OnInit {
   form: FormGroup;
   map: L.Map | undefined;
   locations: any[];
+  currentNames: any[];
   temporaryMarker: L.Marker | undefined;
   markerAdded = false;
 
-  constructor(private routeService: RouteStateService, private router: Router, private locationService: LocationService, private reportService: ReportServiceService) { 
+  constructor(private routeService: RouteStateService, private router: Router, private locationService: LocationService, private reportService: ReportServiceService, private dialog: MatDialog) { 
     this.locationService.get();
     this.locations = [];
+    this.currentNames = [];
     let formControls = {
-      newLocation: new FormControl('', [Validators.required, Validators.minLength(4)]) // Need to deal with duplicates
+      newLocation: new FormControl('', [Validators.required]) // Need to deal with duplicates
     }
     this.form = new FormGroup(formControls)
   }
 
+  isDup(newLocation: string): boolean {
+    if(this.currentNames.includes(newLocation)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   ngOnInit(): void {
     this.locations = this.reportService.locations;
+    
+    for(const location of this.locations) {
+      this.currentNames.push(location.location);
+    }
+
     this.initMap();
     this.addMarkers();
+   
     if(this.locationService.addingMarker) {
       this.map?.on('click', this.addTemporaryMarker.bind(this));
     }
@@ -62,30 +80,37 @@ export class MapComponent implements OnInit {
   }
 
   onCloseMap() {
-    if(this.routeService.isOnThreeComponents) {
-      this.router.navigate(['/rectangle-more-info']);
-    } else if(this.routeService.isOnAddFormMap) {
+    if(this.routeService.isOnAddFormMap) {
       this.router.navigate(['report-add-form']);
     } else {
-      this.router.navigate(['rectangle-container']);
+      this.router.navigate(['/table']);
     }
   }
 
   onAddLocation() {
     if (this.form.valid) {
-      let newLocationName = this.form.get('newLocation')!.value;
-      let coords = this.getTemporaryMarkerCoordinates();
-      let lat: number;
-      let long: number;
-      if(coords) {
-        lat = coords[0];
-        long = coords[1];
-        let newLocation = new MapLocation(newLocationName, lat, long);
-        this.reportService.locations.push(newLocation);
-        this.locationService.addingMarker = false;
+      if(this.isDup(this.form.get('newLocation')!.value)) {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+
+        const dialogRef = this.dialog.open(DuplicateErrorComponent, dialogConfig);
+      } else {
+        let newLocationName = this.form.get('newLocation')!.value;
+        let coords = this.getTemporaryMarkerCoordinates();
+        let lat: number;
+        let long: number;
+        if(coords) {
+          lat = coords[0];
+          long = coords[1];
+          let newLocation = new MapLocation(newLocationName, lat, long);
+          this.reportService.locations.push(newLocation);
+          this.locationService.addingMarker = false;
+        }
+        this.locationService.firstAdd = false;
+        this.router.navigate(['report-add-form']);
       }
-      this.locationService.firstAdd = false;
-      this.router.navigate(['report-add-form']);
     }
   }
 

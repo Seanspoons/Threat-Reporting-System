@@ -15,23 +15,20 @@ export class AppComponent {
   constructor(private router: Router, private routeStateService: RouteStateService, private informationService: InformationService) {}
 
   onInformation(): void {
-    if(this.routeStateService.isOnRectangleContainer) {
-      this.informationService.wasOnRectangleContainer = true;
-    } else if(this.routeStateService.isOnRectangleMap) {
-      this.informationService.wasOnRectangleMap = true;
-    } else if(this.routeStateService.isOnRectangleMoreInfo) {
-      this.informationService.wasOnRectangleMoreInfo = true;
-    } else if(this.routeStateService.isOnThreeComponents) {
-      this.informationService.wasOnThreeComponents = true;
+    if(this.routeStateService.isOnTable) {
+      this.informationService.wasOnTable = true;
+    } else if(this.routeStateService.isOnTableMap) {
+      this.informationService.wasOnTableMap = true;
+    } else if(this.routeStateService.isOnTableMoreInfo) {
+      this.informationService.wasOnTableMoreInfo = true;
     }
     this.router.navigate(['/information']);
   }
 
   onMainPage(): boolean {
-    if(this.routeStateService.isOnRectangleContainer ||
-      this.routeStateService.isOnRectangleMap ||
-      this.routeStateService.isOnRectangleMoreInfo ||
-      this.routeStateService.isOnThreeComponents
+    if(this.routeStateService.isOnTable ||
+      this.routeStateService.isOnTableMap ||
+      this.routeStateService.isOnTableMoreInfo
       ) {
         return true;
       } else {

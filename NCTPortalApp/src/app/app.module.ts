@@ -2,18 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { RectangleContainerComponent } from './components/rectangle-container/rectangle-container.component';
 import { TableComponent } from './components/table/table.component';
-import { CountReportsPipe } from './pipes/count-reports.pipe';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SearchPipe } from './pipes/search.pipe';
 import { ReportAddFormComponent } from './components/report-add-form/report-add-form.component';
 import { MapComponent } from './components/map/map.component';
 import { MoreInfoComponent } from './components/more-info/more-info.component';
 import { RoutingModule } from './routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ThreeComponentsComponent } from './components/three-components/three-components.component';
 import { TwoComponentsComponent } from './components/two-components/two-components.component';
 import { TwoComponentsMoreInfoComponent } from './components/two-components-more-info/two-components-more-info.component';
 import { AddFormMapComponent } from './components/add-form-map/add-form-map.component';
@@ -24,18 +20,17 @@ import { DeleteConfirmationComponent } from './components/delete-confirmation/de
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SubmitConfirmationComponent } from './components/submit-confirmation/submit-confirmation.component';
+import { MoreInfoErrorComponent } from './components/more-info-error/more-info-error.component';
+import { MapErrorComponent } from './components/map-error/map-error.component';
+import { DuplicateErrorComponent } from './components/duplicate-error/duplicate-error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RectangleContainerComponent,
     TableComponent,
-    CountReportsPipe,
-    SearchPipe,
     ReportAddFormComponent,
     MapComponent,
     MoreInfoComponent,
-    ThreeComponentsComponent,
     TwoComponentsComponent,
     TwoComponentsMoreInfoComponent,
     AddFormMapComponent,
@@ -43,7 +38,10 @@ import { SubmitConfirmationComponent } from './components/submit-confirmation/su
     EditReportComponent,
     InformationComponent,
     DeleteConfirmationComponent,
-    SubmitConfirmationComponent
+    SubmitConfirmationComponent,
+    MoreInfoErrorComponent,
+    MapErrorComponent,
+    DuplicateErrorComponent
   ],
   imports: [
     BrowserModule,

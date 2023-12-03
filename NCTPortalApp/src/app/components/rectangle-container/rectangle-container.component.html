@@ -1,8 +1,0 @@
-<div class="rectangle-container">
-    <h2 class="rectangle-container-title">Nuisance Reports</h2>
-    <div id="contentContainer" class="content-container"><app-table></app-table></div>
-    <span class="button-holder">
-        <button id="create-report-button" class="rectangle-button" [routerLink]="['/report-add-form']">Create Nuisance Report</button>
-        <button id="view-map-button" class="rectangle-button" (click)="onMap()" [disabled]="checkButtonState()">{{ buttonText }}</button>
-    </span>
-</div>

@@ -8,10 +8,9 @@ import { Subscription, filter } from 'rxjs';
 export class RouteStateService {
 
   private routerSubscription: Subscription;
-  public isOnRectangleMap = false;
-  public isOnRectangleMoreInfo = false;
-  public isOnRectangleContainer = true;
-  public isOnThreeComponents = false;
+  public isOnTableMap = false;
+  public isOnTableMoreInfo = false;
+  public isOnTable = true;
   public isOnAddForm = false;
   public isOnAddFormMap = false;
 
@@ -28,10 +27,9 @@ export class RouteStateService {
   }
 
   private updateRouteFlags(url: string): void {
-    this.isOnRectangleContainer = url.includes('/rectangle-container');
-    this.isOnRectangleMap = url.includes('/rectangle-map');
-    this.isOnRectangleMoreInfo = url.includes('/rectangle-more-info');
-    this.isOnThreeComponents = url.includes('three-components');
+    this.isOnTable = url.includes('/table');
+    this.isOnTableMap = url.includes('/table-map');
+    this.isOnTableMoreInfo = url.includes('/table-more-info');
     this.isOnAddForm = url.includes('report-add-form');
     this.isOnAddFormMap = url.includes('add-form-map');
   }

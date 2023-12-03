@@ -74,14 +74,12 @@ export class EditReportComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
-        if(this.loginService.wasOnRectangleContainer) {
-          this.router.navigate(['/rectangle-container']);
-        } else if(this.loginService.wasOnRectangleMap) {
-          this.router.navigate(['/rectangle-map']);
-        } else if(this.loginService.wasOnRectangleMoreInfo) {
-          this.router.navigate(['/rectangle-more-info']);
-        } else if(this.loginService.wasOnThreeComponents) {
-          this.router.navigate(['/three-components']);
+        if(this.loginService.wasOnTable) {
+          this.router.navigate(['/table']);
+        } else if(this.loginService.wasOnTableMap) {
+          this.router.navigate(['/table-map']);
+        } else if(this.loginService.wasOnTableMoreInfo) {
+          this.router.navigate(['/table-more-info']);
         }
       } else {
 

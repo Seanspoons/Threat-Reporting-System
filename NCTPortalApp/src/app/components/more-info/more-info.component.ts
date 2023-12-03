@@ -20,11 +20,7 @@ export class MoreInfoComponent implements OnInit {
   }
 
   onCloseMoreInfo(): void {
-    if(this.routeService.isOnThreeComponents) {
-      this.router.navigate(['/rectangle-map']);
-    } else {
-      this.router.navigate(['rectangle-container']);
-    }
+    this.router.navigate(['/table']);
   }
 
 }

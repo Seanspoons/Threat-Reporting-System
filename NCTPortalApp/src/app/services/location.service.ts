@@ -9,6 +9,7 @@ export class LocationService{
 
   locations: MapLocation[];
   firstLoad = true;
+  firstLoadMap = true;
   addingMarker = false;
   firstAdd = true;
 
@@ -31,6 +32,10 @@ export class LocationService{
       })
     } else {
     }
+  }
+
+  loadMap(): void {
+    this.firstLoadMap = false;
   }
 
   add(newLocation: MapLocation) {

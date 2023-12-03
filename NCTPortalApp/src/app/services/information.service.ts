@@ -5,10 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class InformationService {
 
-  wasOnRectangleContainer = false;
-  wasOnRectangleMap = false;
-  wasOnRectangleMoreInfo = false;
-  wasOnThreeComponents = false;
+  wasOnTable = false;
+  wasOnTableMap = false;
+  wasOnTableMoreInfo = false;
 
   constructor() { }
 }

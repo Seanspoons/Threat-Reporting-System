@@ -10,9 +10,9 @@ export class LoginService {
 
   reportID: string;
   correctPassword = "fcab0453879a2b2281bc5073e3f5fe54";
-  wasOnRectangleContainer = false;
-  wasOnRectangleMap = false;
-  wasOnRectangleMoreInfo = false;
+  wasOnTable = false;
+  wasOnTableMap = false;
+  wasOnTableMoreInfo = false;
   wasOnThreeComponents = false;
   correctPasswordBoolean = false;
 
