@@ -137,19 +137,24 @@ export class ReportServiceService{
     return this.reports.slice().sort((a,b) => a.location.location.localeCompare(b.location.location));
   }
 
+  /*
   sortTime(): NuisanceReport[] {
     return this.reports.slice().sort((a,b) => a.date.getTime() - b.date.getTime());
   }
-
-  /*
-  sortTime(): NuisanceReport[] {
-    return this.reports.slice().sort((a, b) => {
-      const dateA = a.date instanceof Date ? a.date.getTime() : 0;
-      const dateB = b.date instanceof Date ? b.date.getTime() : 0;
-      return dateA - dateB;
-    });
-  }
   */
+
+  sortTime(): NuisanceReport[] {
+    console.log("sorting time");
+    return this.reports
+      .slice()
+      .sort((a, b) => {
+        const dateA = a.date instanceof Date ? a.date.getTime() : 0;
+        const dateB = b.date instanceof Date ? b.date.getTime() : 0;
+  
+        return dateA - dateB;
+      });
+  }
+  
   
   sortStatus(): NuisanceReport[] {
     return this.reports.slice().sort((a,b) => (a.status === b.status ? 0 : a.status ? -1 : 1));

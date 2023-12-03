@@ -13,7 +13,7 @@
                             class="text-input"
                             type="text"
                             name="reporter"
-                            placeholder="reporter's name"
+                            placeholder="*reporter's name"
                             formControlName="reporter"
                         >
                     </td>
@@ -26,7 +26,7 @@
                             class="text-input-white"
                             type="text"
                             name="phoneNumber"
-                            placeholder="phone number"
+                            placeholder="*phone number"
                             formControlName="phoneNumber"
                         >
                     </td>
@@ -39,7 +39,7 @@
                             class="text-input"
                             type="text"
                             name="baddieName"
-                            placeholder="baddie's name"
+                            placeholder="*baddie's name"
                             formControlName="baddieName"
                         >
                     </td>
@@ -54,7 +54,7 @@
                                 class="text-input-white"
                                 formControlName="location"
                             >
-                                <option value="" disabled selected hidden>Select a location</option>
+                                <option value="" disabled selected hidden>*Select a location</option>
                                 <option *ngFor="let l of locations" [value]="l.location" >{{ l.location }}</option>
                             </select>
                         </span>
