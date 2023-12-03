@@ -144,7 +144,6 @@ export class ReportServiceService{
   */
 
   sortTime(): NuisanceReport[] {
-    console.log("sorting time");
     return this.reports
       .slice()
       .sort((a, b) => {
