@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { RouteStateService } from 'src/app/services/route-state.service';
 import { MoreInfoComponent } from '../more-info/more-info.component';
 import { LoginService } from 'src/app/services/login.service';
+import { SizingService } from 'src/app/services/sizing.service';
 
 @Component({
   selector: 'app-table',
@@ -21,6 +22,7 @@ export class TableComponent implements OnInit {
       private reportService: ReportServiceService,
       private routeService: RouteStateService,
       private loginService: LoginService,
+      private sizingService: SizingService,
       private router: Router
       ) {
     this.query='';
@@ -30,6 +32,53 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.reports = this.reportService.reports;
+    let parentHeight = this.sizingService.contentContainerHeight;
+    const scrollTableDiv = document.getElementById('scrollTableDiv');
+
+    if(scrollTableDiv) {
+      let newHeight = 0.5*parentHeight;
+      scrollTableDiv.style.height = `${newHeight}px`;
+    }
+
+    this.sizingService.windowResized.subscribe(() => {
+      let newParentHeight = this.sizingService.contentContainerHeight;
+      if(scrollTableDiv) {
+        let newHeight = 0.5*newParentHeight;
+        scrollTableDiv.style.height = `${newHeight}px`;
+      }
+    });
+  }
+
+  getScrollParentHeight(): number {
+    const scrollTableDiv = document.getElementById('scrollTableDiv');
+
+    if(scrollTableDiv) {
+      console.log("scroll table div is good");
+      const scrollTableParent = scrollTableDiv.parentElement;
+
+      if(scrollTableParent) {
+        console.log("scroll table div's parent is good");
+        const heightInPixels = scrollTableParent.offsetHeight;
+        return heightInPixels;
+      }
+    }
+    return 0;
+  }
+
+  sortByBaddieName():void {
+
+  }
+
+  sortByLocation(): void {
+
+  }
+
+  sortByTime(): void {
+
+  }
+
+  sortByStatus(): void {
+
   }
 
   onReportMenu(reportID: string) {

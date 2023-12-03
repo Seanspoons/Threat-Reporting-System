@@ -83,7 +83,6 @@ export class ReportServiceService{
   }
 
   delete(deleteReportID: string) {
-    console.log("Delete called with this id: " + deleteReportID);
     const url = `https://272.selfip.net/apps/22m6j5mz3y/collections/reports/documents//${deleteReportID}`;
     this.http.delete(url).subscribe(
       (data: any) => {

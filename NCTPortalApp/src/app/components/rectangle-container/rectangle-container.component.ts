@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { ReportServiceService } from 'src/app/services/report-service.service';
 import { RouteStateService } from 'src/app/services/route-state.service';
+import { SizingService } from 'src/app/services/sizing.service';
 
 @Component({
   selector: 'app-rectangle-container',
@@ -13,13 +14,32 @@ export class RectangleContainerComponent implements OnInit {
 
   buttonText = "View Report Map";
 
-  constructor(private appComponent: AppComponent, private routeService: RouteStateService, private router: Router, private reportService: ReportServiceService) { }
+  constructor(
+      private appComponent: AppComponent,
+      private routeService: RouteStateService,
+      private reportService: ReportServiceService,
+      private sizingService: SizingService,
+      private router: Router, 
+      ) { }
 
   ngOnInit(): void {
     if(this.reportService.justDeleted) {
       this.reportService.get();
       this.reportService.justDeleted = false;
     }
+
+    const contentContainer = document.getElementById('contentContainer');
+    if(contentContainer) {
+      let containerHeight = contentContainer.offsetHeight;
+      this.sizingService.contentContainerHeight = containerHeight;
+    }
+
+    this.sizingService.windowResized.subscribe(() => {
+      if(contentContainer) {
+        let containerHeight = contentContainer.offsetHeight;
+        this.sizingService.contentContainerHeight = containerHeight;
+      }
+    });
   }
 
   checkButtonState(): boolean {

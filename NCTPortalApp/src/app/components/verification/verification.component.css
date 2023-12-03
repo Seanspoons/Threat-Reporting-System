@@ -37,6 +37,11 @@
     align-self: flex-start;
 }
 
+.text-input {
+    border-radius: 10px;
+    border: none;
+}
+
 table {
     width: 100%;
 }

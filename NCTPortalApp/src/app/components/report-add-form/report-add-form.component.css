@@ -11,6 +11,17 @@
     justify-content: center;
 }
 
+.text-input {
+    border-radius: 10px;
+    border: none;
+}
+
+.text-input-white {
+    border-radius: 10px;
+    border: none;
+    background-color: #D6D6D6;
+}
+
 .content-container {
     display: flex;
     flex-direction: column;
