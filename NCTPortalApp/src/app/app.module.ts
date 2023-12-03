@@ -18,7 +18,7 @@ import { EditReportComponent } from './components/edit-report/edit-report.compon
 import { InformationComponent } from './components/information/information.component';
 import { DeleteConfirmationComponent } from './components/delete-confirmation/delete-confirmation.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
 import { SubmitConfirmationComponent } from './components/submit-confirmation/submit-confirmation.component';
 import { MoreInfoErrorComponent } from './components/more-info-error/more-info-error.component';
 import { MapErrorComponent } from './components/map-error/map-error.component';

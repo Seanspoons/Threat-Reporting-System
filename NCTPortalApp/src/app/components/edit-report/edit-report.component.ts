@@ -5,7 +5,7 @@ import { NuisanceReport } from 'src/app/models/nuisance-report';
 import { LoginService } from 'src/app/services/login.service';
 import { ReportServiceService } from 'src/app/services/report-service.service';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog, MatLegacyDialogConfig as MatDialogConfig } from '@angular/material/legacy-dialog';
 import { SubmitConfirmationComponent } from 'src/app/components/submit-confirmation/submit-confirmation.component';
 
 @Component({

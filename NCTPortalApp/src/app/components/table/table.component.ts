@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { RouteStateService } from 'src/app/services/route-state.service';
 import { MoreInfoComponent } from '../more-info/more-info.component';
 import { LoginService } from 'src/app/services/login.service';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog, MatLegacyDialogConfig as MatDialogConfig } from '@angular/material/legacy-dialog';
 import { MoreInfoErrorComponent } from 'src/app/components/more-info-error/more-info-error.component';
 import { MapErrorComponent } from '../map-error/map-error.component';
 
