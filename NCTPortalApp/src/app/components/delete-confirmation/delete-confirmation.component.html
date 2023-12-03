@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Delete Confirmation</h2>
+
+<mat-dialog-content>
+    <p>
+        Are you sure you would like to delete this report? Deleting a report
+        is a permanent action. If you wish to continue and delete, confirm
+        and you will be taken to the main menu.
+    </p>
+</mat-dialog-content>
+
+<mat-dialog-actions class="button-holder">
+    <button id="cancel-button" class="confirm-button" (click)="cancelDelete()">Cancel</button>
+    <button id="delete-button" class="confirm-button" (click)="confirmDelete()">Confirm</button>
+</mat-dialog-actions>
+

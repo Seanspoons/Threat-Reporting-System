@@ -31,6 +31,7 @@ export class RectangleContainerComponent implements OnInit {
     const contentContainer = document.getElementById('contentContainer');
     if(contentContainer) {
       let containerHeight = contentContainer.offsetHeight;
+      console.log("Height of contentContainer from rectContainer is: " + containerHeight + "px");
       this.sizingService.contentContainerHeight = containerHeight;
     }
 

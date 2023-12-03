@@ -31,8 +31,7 @@ export class VerificationComponent implements OnInit {
     if(inputPassword === "BaggyJeans") {
       this.loginService.verifyPassword(inputPassword);
     } else {
-      console.log("Password is wrong");
-      // Error password is wrong
+      this.shakePasswordInput();
     }
   }
 
@@ -49,6 +48,16 @@ export class VerificationComponent implements OnInit {
     } else if(this.loginService.wasOnThreeComponents) {
       this.loginService.wasOnThreeComponents = false;
       this.router.navigate(['/three-components']);
+    }
+  }
+
+  shakePasswordInput() {
+    const passwordInput = document.getElementById('passwordInput');
+    if(passwordInput) {
+      passwordInput.classList.add('shake');
+      passwordInput.addEventListener('animationend', () => {
+        passwordInput.classList.remove('shake');
+      }, { once: true });
     }
   }
 }

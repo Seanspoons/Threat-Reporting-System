@@ -75,7 +75,7 @@ export class ReportServiceService{
         this.getLocations();
         if(!this.justEdited) {
           this.firstLoad = false;
-        } else { // Maybe don't need this?
+        } else {
           this.justEdited = false;
         }
       }

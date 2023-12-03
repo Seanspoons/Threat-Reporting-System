@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SizingService } from 'src/app/services/sizing.service';
 
 @Component({
   selector: 'app-two-components-more-info',

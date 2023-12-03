@@ -20,6 +20,10 @@ import { AddFormMapComponent } from './components/add-form-map/add-form-map.comp
 import { VerificationComponent } from './components/verification/verification.component';
 import { EditReportComponent } from './components/edit-report/edit-report.component';
 import { InformationComponent } from './components/information/information.component';
+import { DeleteConfirmationComponent } from './components/delete-confirmation/delete-confirmation.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { SubmitConfirmationComponent } from './components/submit-confirmation/submit-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -37,14 +41,18 @@ import { InformationComponent } from './components/information/information.compo
     AddFormMapComponent,
     VerificationComponent,
     EditReportComponent,
-    InformationComponent
+    InformationComponent,
+    DeleteConfirmationComponent,
+    SubmitConfirmationComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     RoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NoopAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

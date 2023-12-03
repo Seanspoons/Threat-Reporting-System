@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { NuisanceReport } from 'src/app/models/nuisance-report';
 import { LoginService } from 'src/app/services/login.service';
 import { ReportServiceService } from 'src/app/services/report-service.service';
+import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { SubmitConfirmationComponent } from 'src/app/components/submit-confirmation/submit-confirmation.component';
 
 @Component({
   selector: 'app-edit-report',
@@ -15,7 +18,7 @@ export class EditReportComponent implements OnInit {
   form: FormGroup;
   public report!: NuisanceReport;
 
-  constructor(private loginService: LoginService, private router: Router, private reportService: ReportServiceService) { 
+  constructor(private loginService: LoginService, private router: Router, private reportService: ReportServiceService, private dialog: MatDialog) { 
     let formControls = {
       password: new FormControl('', [Validators.required]),
     }
@@ -44,23 +47,45 @@ export class EditReportComponent implements OnInit {
   }
 
   confirmDelete() {
-    // Are you sure you want to delete
-    // This will permanently delete the report
-    // This will take you to the main menu
-    this.reportService.delete(this.report.id);
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    const dialogRef = this.dialog.open(DeleteConfirmationComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.reportService.delete(this.report.id);
+      } else {
+
+      }
+    });
   }
+  
 
   onSubmit() {
-    // Should probably ask user to confirm they want to take action
-    if(this.loginService.wasOnRectangleContainer) {
-      this.router.navigate(['/rectangle-container']);
-    } else if(this.loginService.wasOnRectangleMap) {
-      this.router.navigate(['/rectangle-map']);
-    } else if(this.loginService.wasOnRectangleMoreInfo) {
-      this.router.navigate(['/rectangle-more-info']);
-    } else if(this.loginService.wasOnThreeComponents) {
-      this.router.navigate(['/three-components']);
-    }
-  }
+    const dialogConfig = new MatDialogConfig();
 
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    const dialogRef = this.dialog.open(SubmitConfirmationComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        if(this.loginService.wasOnRectangleContainer) {
+          this.router.navigate(['/rectangle-container']);
+        } else if(this.loginService.wasOnRectangleMap) {
+          this.router.navigate(['/rectangle-map']);
+        } else if(this.loginService.wasOnRectangleMoreInfo) {
+          this.router.navigate(['/rectangle-more-info']);
+        } else if(this.loginService.wasOnThreeComponents) {
+          this.router.navigate(['/three-components']);
+        }
+      } else {
+
+      }
+    });
+  }
 }

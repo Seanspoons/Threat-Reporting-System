@@ -31,13 +31,16 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("Table OnInit");
     this.reports = this.reportService.reports;
     let parentHeight = this.sizingService.contentContainerHeight;
     const scrollTableDiv = document.getElementById('scrollTableDiv');
 
     if(scrollTableDiv) {
       let newHeight = 0.5*parentHeight;
+      console.log("The new height of table from Table OnInit: " + newHeight + "px");
       scrollTableDiv.style.height = `${newHeight}px`;
+      console.log("Just applied the style");
     }
 
     this.sizingService.windowResized.subscribe(() => {

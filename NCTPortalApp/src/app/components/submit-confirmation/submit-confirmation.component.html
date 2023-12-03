@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Submit Confirmation</h2>
+
+<mat-dialog-content>
+    <p>
+        Are you sure you are finished editing this report? If you wish to continue
+        editing, press cancel. Otherwise confirm your actions to finish editing.
+    </p>
+</mat-dialog-content>
+
+<mat-dialog-actions class="button-holder">
+    <button id="cancel-button" class="confirm-button" (click)="cancelSubmit()">Cancel</button>
+    <button id="submit-button" class="confirm-button" (click)="confirmSubmit()">Confirm</button>
+</mat-dialog-actions>
