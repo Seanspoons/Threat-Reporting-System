@@ -33,16 +33,14 @@ ng serve -o
 
 2. You can now use the application to report threats, view existing reports, and perform other actions based on your authentication status. (As this application is just a hypothetical application the admin password is: BaggyJeans)
 
-# Technologies Used
-
 ## Technologies Used
 
-- [Angular](https://angular.io/)
-- HTML/CSS
-- [TypeScript](https://www.typescriptlang.org/)
-- [Angular Material](https://material.angular.io/) (for pop-up UI components)
-- [Leaflet](https://leafletjs.com/) (for interactive map)
-- [Hashify](https://hashify.net/) (for admin password authentication)
+- **Angular** (https://angular.io/)
+- **HTML/CSS**
+- **TypeScript** (https://www.typescriptlang.org/)
+- **Angular Material** (https://material.angular.io/) (for pop-up UI components)
+- **Leaflet** (https://leafletjs.com/) (for interactive map)
+- **Hashify** (https://hashify.net/) (for admin password authentication)
 
 
 
