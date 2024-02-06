@@ -10,7 +10,16 @@ This Threat Reporting Application is developed in Angular and provides users wit
 - **Edit and Delete Reports**: Authenticated users have the ability to edit and delete the reports they have submitted.
 - **Responsive Design**: The application is designed to be responsive on all devices except mobile.
 
-## Installation
+## Technologies Used
+
+- **Angular** (https://angular.io/)
+- **HTML/CSS**
+- **TypeScript** (https://www.typescriptlang.org/)
+- **Angular Material** (https://material.angular.io/) (for pop-up UI components)
+- **Leaflet** (https://leafletjs.com/) (for interactive map)
+- **Hashify** (https://hashify.net/) (for admin password authentication)
+
+## Installation & Usage
 
 1. Clone the repository:
 
@@ -25,24 +34,8 @@ cd threat-reporting-app
 
 npm install
 
-## Usage
-
-1. Start the development server
+4. Start the development server
 
 ng serve -o
 
-2. You can now use the application to report threats, view existing reports, and perform other actions based on your authentication status. (As this application is just a hypothetical application the admin password is: BaggyJeans)
-
-## Technologies Used
-
-- **Angular** (https://angular.io/)
-- **HTML/CSS**
-- **TypeScript** (https://www.typescriptlang.org/)
-- **Angular Material** (https://material.angular.io/) (for pop-up UI components)
-- **Leaflet** (https://leafletjs.com/) (for interactive map)
-- **Hashify** (https://hashify.net/) (for admin password authentication)
-
-
-
-
-
+5. You can now use the application to report threats, view existing reports, and perform other actions based on your authentication status. (As this application is just a hypothetical application the admin password is: BaggyJeans)
