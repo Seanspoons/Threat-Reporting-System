@@ -24,7 +24,7 @@ This Threat Reporting Application is developed in Angular and provides users wit
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/threat-reporting-app.git
+git clone https://github.com/seanspoons/threat-reporting-system.git
 
 2. Navigate to the project directory:
 
